@@ -59,7 +59,7 @@ const WeddingDetails = () => {
             custom={4}
             className="font-heading text-lg tracking-widest text-cream/90"
           >
-            Saturday, September 6th, 2025
+            Sunday, July 12th, 2026
           </motion.p>
           <motion.div variants={fadeUp} custom={5} className="mt-8">
             <p className="font-heading text-xs tracking-[0.3em] uppercase text-cream/60">

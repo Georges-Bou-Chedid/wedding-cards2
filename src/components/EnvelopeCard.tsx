@@ -49,7 +49,7 @@ const EnvelopeCard = ({ onOpen }: EnvelopeCardProps) => {
               Marianne
             </h2>
             <p className="font-heading text-sm text-muted-foreground mt-4 tracking-widest uppercase">
-              September 6, 2025
+              July 12, 2026
             </p>
           </div>
         </motion.div>

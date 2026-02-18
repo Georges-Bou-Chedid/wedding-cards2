@@ -134,7 +134,7 @@ const WeddingDetails = () => {
           <h2 className="font-heading text-3xl text-foreground mb-10 tracking-wide">
             Counting the Days
           </h2>
-          <CountdownTimer targetDate="2025-09-06T18:30:00" />
+          <CountdownTimer targetDate="2026-07-12T18:30:00" />
         </div>
       </Section>
 

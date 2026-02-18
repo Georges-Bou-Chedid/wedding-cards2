@@ -42,11 +42,11 @@ const EnvelopeCard = ({ onOpen }: EnvelopeCardProps) => {
               You're Invited
             </p>
             <h2 className="font-display text-4xl text-foreground leading-tight">
-              Youssef
+              Bob
             </h2>
             <p className="font-heading text-xl text-sage my-1">&</p>
             <h2 className="font-display text-4xl text-foreground leading-tight">
-              Mayssa
+              Marianne
             </h2>
             <p className="font-heading text-sm text-muted-foreground mt-4 tracking-widest uppercase">
               September 6, 2025

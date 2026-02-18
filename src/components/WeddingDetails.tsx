@@ -4,6 +4,8 @@ import heroBg from "@/assets/hero-bg.jpg";
 import CountdownTimer from "./CountdownTimer";
 import RSVPForm from "./RSVPForm";
 import GiftRegistry from "./GiftRegistry";
+import PhotoGallery from "./PhotoGallery";
+import MusicPlayer from "./MusicPlayer";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -17,7 +19,7 @@ const fadeUp = {
 const WeddingDetails = () => {
   return (
     <div className="min-h-screen bg-cream overflow-x-hidden">
-      {/* Hero Section */}
+      <MusicPlayer />
       <section className="relative h-screen flex items-end justify-center pb-20">
         <div className="absolute inset-0">
           <img src={heroBg} alt="" className="w-full h-full object-cover" />
@@ -40,7 +42,7 @@ const WeddingDetails = () => {
             custom={1}
             className="font-display text-6xl sm:text-7xl mb-2 text-cream"
           >
-            Youssef
+            Bob
           </motion.h1>
           <motion.p variants={fadeUp} custom={2} className="font-heading text-2xl text-gold-light my-2">
             &
@@ -50,7 +52,7 @@ const WeddingDetails = () => {
             custom={3}
             className="font-display text-6xl sm:text-7xl mb-6 text-cream"
           >
-            Mayssa
+            Marianne
           </motion.h1>
           <motion.p
             variants={fadeUp}
@@ -95,6 +97,11 @@ const WeddingDetails = () => {
             Matthew 19:6
           </motion.p>
         </motion.div>
+      </Section>
+
+      {/* Photo Gallery */}
+      <Section>
+        <PhotoGallery />
       </Section>
 
       {/* Parents */}
@@ -168,7 +175,7 @@ const WeddingDetails = () => {
       {/* Footer */}
       <section className="py-16 text-center bg-sage-dark">
         <p className="font-display text-4xl text-cream">
-          Youssef & Mayssa
+          Bob & Marianne
         </p>
         <p className="font-heading text-sm text-cream/60 mt-3 tracking-widest">
           ♡ Together Forever ♡

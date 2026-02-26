@@ -1,6 +1,9 @@
 import { motion, type Easing } from "framer-motion";
 import { MapPin, Church, Clock, Heart } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import floralCorner from "@/assets/floral-corner.jpeg";
+import virginMary from "@/assets/virgin-mary.jpeg";
+import sacredHeart from "@/assets/sacred-heart.jpeg";
 import CountdownTimer from "./CountdownTimer";
 import RSVPForm from "./RSVPForm";
 import GiftRegistry from "./GiftRegistry";
@@ -16,14 +19,30 @@ const fadeUp = {
   }),
 };
 
+const FloralBorder = ({ className = "" }: { className?: string }) => (
+  <div className={`pointer-events-none absolute ${className}`}>
+    <img src={floralCorner} alt="" className="w-full h-full object-contain opacity-15" />
+  </div>
+);
+
 const WeddingDetails = () => {
   return (
-    <div className="min-h-screen bg-cream overflow-x-hidden">
+    <div className="min-h-screen bg-cream overflow-x-hidden relative">
       <MusicPlayer />
+
+      {/* Persistent floral side borders */}
+      <div className="fixed left-0 top-0 bottom-0 w-20 sm:w-32 pointer-events-none z-40 opacity-[0.08]">
+        <img src={floralCorner} alt="" className="w-full h-full object-cover" />
+      </div>
+      <div className="fixed right-0 top-0 bottom-0 w-20 sm:w-32 pointer-events-none z-40 opacity-[0.08] scale-x-[-1]">
+        <img src={floralCorner} alt="" className="w-full h-full object-cover" />
+      </div>
+
+      {/* Hero */}
       <section className="relative h-screen flex items-end justify-center pb-20">
         <div className="absolute inset-0">
           <img src={heroBg} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
         </div>
         <motion.div
           className="relative z-10 text-center text-primary-foreground px-6"
@@ -70,16 +89,33 @@ const WeddingDetails = () => {
         </motion.div>
       </section>
 
+      {/* Sacred Heart Ornament */}
+      <Section>
+        <motion.div
+          className="flex justify-center py-10"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <img src={sacredHeart} alt="Sacred Heart" className="w-32 h-32 sm:w-40 sm:h-40 object-contain opacity-60" />
+        </motion.div>
+      </Section>
+
       {/* Bible Verse */}
       <Section>
         <motion.div
-          className="text-center max-w-lg mx-auto py-20 px-6"
+          className="text-center max-w-lg mx-auto py-16 px-6 relative"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
+          <FloralBorder className="top-0 left-0 w-24 h-24" />
+          <FloralBorder className="top-0 right-0 w-24 h-24 scale-x-[-1]" />
+          <FloralBorder className="bottom-0 left-0 w-24 h-24 scale-y-[-1]" />
+          <FloralBorder className="bottom-0 right-0 w-24 h-24 scale-[-1]" />
           <motion.div variants={fadeUp} custom={0}>
-            <Heart className="w-6 h-6 mx-auto text-sage mb-6" />
+            <Heart className="w-6 h-6 mx-auto text-primary mb-6" />
           </motion.div>
           <motion.blockquote
             variants={fadeUp}
@@ -104,10 +140,23 @@ const WeddingDetails = () => {
         <PhotoGallery />
       </Section>
 
+      {/* Virgin Mary Ornament */}
+      <Section className="bg-secondary/50">
+        <motion.div
+          className="flex justify-center py-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <img src={virginMary} alt="Blessed Virgin Mary" className="w-28 h-40 sm:w-36 sm:h-52 object-contain opacity-50" />
+        </motion.div>
+      </Section>
+
       {/* Parents */}
       <Section className="bg-secondary/50">
         <motion.div
-          className="text-center max-w-lg mx-auto py-16 px-6"
+          className="text-center max-w-lg mx-auto py-12 px-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -130,7 +179,9 @@ const WeddingDetails = () => {
 
       {/* Countdown */}
       <Section>
-        <div className="text-center py-16 px-6">
+        <div className="text-center py-16 px-6 relative">
+          <FloralBorder className="top-0 left-0 w-20 h-20" />
+          <FloralBorder className="top-0 right-0 w-20 h-20 scale-x-[-1]" />
           <h2 className="font-heading text-3xl text-foreground mb-10 tracking-wide">
             Counting the Days
           </h2>
@@ -141,7 +192,7 @@ const WeddingDetails = () => {
       {/* Ceremony */}
       <Section className="bg-secondary/50">
         <EventCard
-          icon={<Church className="w-8 h-8 text-sage" />}
+          icon={<Church className="w-8 h-8 text-primary" />}
           title="Wedding Ceremony"
           details="Saint Georges Church"
           time="6:30 PM"
@@ -153,7 +204,7 @@ const WeddingDetails = () => {
       {/* Celebration */}
       <Section>
         <EventCard
-          icon={<Heart className="w-8 h-8 text-sage" />}
+          icon={<Heart className="w-8 h-8 text-primary" />}
           title="The Celebration"
           details="Porto Verde Venue"
           time="After Ceremony"
@@ -173,11 +224,13 @@ const WeddingDetails = () => {
       </Section>
 
       {/* Footer */}
-      <section className="py-16 text-center bg-sage-dark">
-        <p className="font-display text-4xl text-cream">
+      <section className="py-16 text-center bg-navy relative overflow-hidden">
+        <FloralBorder className="top-0 left-0 w-32 h-32 invert opacity-10" />
+        <FloralBorder className="top-0 right-0 w-32 h-32 invert opacity-10 scale-x-[-1]" />
+        <p className="font-display text-4xl text-cream relative z-10">
           Bob & Marianne
         </p>
-        <p className="font-heading text-sm text-cream/60 mt-3 tracking-widest">
+        <p className="font-heading text-sm text-cream/60 mt-3 tracking-widest relative z-10">
           ♡ Together Forever ♡
         </p>
       </section>
@@ -209,7 +262,7 @@ const EventCard = ({
   mapUrl: string;
 }) => (
   <motion.div
-    className="text-center py-16 px-6 max-w-md mx-auto"
+    className="text-center py-16 px-6 max-w-md mx-auto relative"
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, margin: "-100px" }}
@@ -236,7 +289,7 @@ const EventCard = ({
         href={mapUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block font-heading text-sm tracking-widest uppercase border border-sage text-sage px-6 py-2 rounded-sm hover:bg-sage hover:text-primary-foreground transition-colors duration-300"
+        className="inline-block font-heading text-sm tracking-widest uppercase border border-primary text-primary px-6 py-2 rounded-sm hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
       >
         View Map
       </a>

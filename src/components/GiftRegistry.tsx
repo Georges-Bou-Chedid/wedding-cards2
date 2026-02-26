@@ -19,7 +19,7 @@ const GiftRegistry = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <Gift className="w-8 h-8 mx-auto text-sage mb-4" />
+      <Gift className="w-8 h-8 mx-auto text-primary mb-4" />
       <h2 className="font-heading text-3xl text-foreground mb-4">Gift Registry</h2>
       <p className="font-body text-sm text-muted-foreground leading-relaxed mb-8">
         Your love, laughter, and presence are all we could wish for on our special day.
@@ -34,7 +34,7 @@ const GiftRegistry = () => {
         </div>
         <button
           onClick={copyAccount}
-          className="text-sage hover:text-sage-dark transition-colors"
+          className="text-primary hover:text-toile-dark transition-colors"
           title="Copy account number"
         >
           {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}

@@ -38,7 +38,7 @@ const PhotoGallery = () => {
         Our Moments
       </h2>
 
-      <div className="relative overflow-hidden rounded-lg aspect-square max-w-lg mx-auto">
+      <div className="relative overflow-hidden rounded-lg aspect-square max-w-lg mx-auto border-2 border-toile-light/30">
         <AnimatePresence initial={false} custom={direction} mode="popLayout">
           <motion.img
             key={current}
@@ -54,34 +54,31 @@ const PhotoGallery = () => {
           />
         </AnimatePresence>
 
-        {/* Nav buttons */}
         <button
           onClick={() => navigate(-1)}
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/30 backdrop-blur-sm text-cream flex items-center justify-center hover:bg-foreground/50 transition-colors"
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-navy/30 backdrop-blur-sm text-cream flex items-center justify-center hover:bg-navy/50 transition-colors"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={() => navigate(1)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/30 backdrop-blur-sm text-cream flex items-center justify-center hover:bg-foreground/50 transition-colors"
+          className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-navy/30 backdrop-blur-sm text-cream flex items-center justify-center hover:bg-navy/50 transition-colors"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
       </div>
 
-      {/* Caption */}
       <p className="font-heading text-sm text-muted-foreground mt-4 italic">
         {captions[current]}
       </p>
 
-      {/* Dots */}
       <div className="flex justify-center gap-2 mt-4">
         {photos.map((_, i) => (
           <button
             key={i}
             onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
             className={`w-2 h-2 rounded-full transition-colors ${
-              i === current ? "bg-sage" : "bg-sage-light"
+              i === current ? "bg-primary" : "bg-toile-light"
             }`}
           />
         ))}

@@ -22,9 +22,9 @@ import PhotoGallery from "./PhotoGallery";
  * Alternatively, put files in src/assets/ and update the imports.
  * ─────────────────────────────────────────────────────────────────────────────
  */
-import heroBg   from "@/assets/wedding-couple-1.jpg";   // ← replace with _2745
-import dateBg   from "@/assets/wedding-couple-2.jpg";   // ← replace with your date-section photo
-import footerBg from "@/assets/wedding-couple-3.jpg";   // ← replace with your footer photo
+import heroBg   from "@/assets/IMG_2745.webp";   // ← replace with _2745
+import dateBg   from "@/assets/IMG_2741.webp";   // ← replace with your date-section photo
+import footerBg from "@/assets/IMG_2750.webp";   // ← replace with your footer photo
 
 /* ─── Scroll-triggered fade-up ─────────────────────────────────────────── */
 const useScrollReveal = (ref: React.RefObject<HTMLElement | null>) => {

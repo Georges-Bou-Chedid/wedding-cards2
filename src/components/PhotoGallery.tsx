@@ -17,16 +17,26 @@ import couple1 from "@/assets/wedding-couple-1.jpg";   // Replace: rename your p
 import couple2 from "@/assets/wedding-couple-2.jpg";   // Replace: rename your photo to this file
 import couple3 from "@/assets/wedding-couple-3.jpg";   // Replace: rename your photo to this file
 
+/*
+ * ─── HOW TO ADD YOUR OWN PHOTOS ─────────────────────────────────────────────
+ * 1. Copy your JPEG files into  src/assets/
+ *    Name them: wedding-couple-1.jpg … wedding-couple-N.jpg
+ *    (wedding-couple-1.jpg is already used as the hero background too)
+ *
+ * 2. Add import lines here:
+ *    import couple4 from "@/assets/wedding-couple-4.jpg";
+ *    import couple5 from "@/assets/wedding-couple-5.jpg";
+ *    … etc.
+ *
+ * 3. Add entries to the SLIDES array below.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
 const SLIDES: { src: string; alt: string; placeholder?: boolean }[] = [
-  { src: couple1, alt: "Bob & Marianne", placeholder: false },
-  { src: couple2, alt: "Bob & Marianne", placeholder: false },
-  { src: couple3, alt: "Bob & Marianne", placeholder: false },
-  /* ── Add your remaining photos below ───────────────────────────
-     import couple4 from "@/assets/wedding-couple-4.jpg";
-     then add:  { src: couple4, alt: "Bob & Marianne", placeholder: false },
-  ────────────────────────────────────────────────────────────── */
-  { src: "", alt: "Photo 4", placeholder: true },
-  { src: "", alt: "Photo 5", placeholder: true },
+  { src: couple1, alt: "Bob & Marianne — Chapel" },
+  { src: couple2, alt: "Bob & Marianne" },
+  { src: couple3, alt: "Bob & Marianne" },
+  // ── uncomment / add entries here for each additional photo ──
+  // { src: couple4, alt: "Bob & Marianne" },
 ];
 
 const PlaceholderSlide = ({ index }: { index: number }) => (

@@ -6,13 +6,25 @@ import GiftRegistry from "./GiftRegistry";
 import PhotoGallery from "./PhotoGallery";
 
 /*
- * ─── HERO BACKGROUND IMAGE ────────────────────────────────────────────────────
- * Replace the file  src/assets/wedding-couple-1.jpg  with your photo _2745
- * (just rename _2745.jpg → wedding-couple-1.jpg and drop it in that folder).
- * The import below will then automatically use it.
+ * ─────────────────────────────────────────────────────────────────────────────
+ * HOW TO ADD YOUR ACTUAL PHOTOS — 3 simple steps:
+ *
+ * 1. Copy your JPG files into  public/photos/
+ *    Example: public/photos/photo1.jpg, public/photos/photo2.jpg, etc.
+ *
+ * 2. In this file, replace the import paths below with your filenames:
+ *    import heroBg   from "@/assets/YOUR_HERO_PHOTO.jpg";   ← _2745 photo
+ *    import dateBg   from "@/assets/YOUR_DATE_PHOTO.jpg";
+ *    import footerBg from "@/assets/YOUR_FOOTER_PHOTO.jpg";
+ *
+ * 3. In PhotoGallery.tsx, update the import lines near the top.
+ *
+ * Alternatively, put files in src/assets/ and update the imports.
  * ─────────────────────────────────────────────────────────────────────────────
  */
-import heroBg from "@/assets/wedding-couple-1.jpg";
+import heroBg   from "@/assets/wedding-couple-1.jpg";   // ← replace with _2745
+import dateBg   from "@/assets/wedding-couple-2.jpg";   // ← replace with your date-section photo
+import footerBg from "@/assets/wedding-couple-3.jpg";   // ← replace with your footer photo
 
 /* ─── Scroll-triggered fade-up ─────────────────────────────────────────── */
 const useScrollReveal = (ref: React.RefObject<HTMLElement | null>) => {
@@ -102,16 +114,10 @@ const MapBtn = ({ href, children }: { href: string; children: React.ReactNode })
      date   → Date section with "12 July 2026"
      footer → Footer section
 ───────────────────────────────────────────────────────────────────────── */
-/*
- * BG — background image config for full-bleed sections.
- *   hero   → already uses your imported couple photo (see import above).
- *   date   → add a URL or import another photo: { src: yourDateBg, placeholder: false }
- *   footer → same as date
- */
 const BG: Record<string, { src: string; placeholder: boolean }> = {
-  hero:   { src: heroBg,  placeholder: false },
-  date:   { src: "",      placeholder: true  },
-  footer: { src: "",      placeholder: true  },
+  hero:   { src: heroBg,   placeholder: false },
+  date:   { src: dateBg,   placeholder: false },
+  footer: { src: footerBg, placeholder: false },
 };
 
 /* ─── Hero / full-bleed section helper ─────────────────────────────────── */
@@ -193,63 +199,116 @@ const WeddingDetails = () => {
       {/* ── 2. DATE SECTION ── */}
       <FullBleed
         bgKey="date"
-        fallbackColor="hsl(var(--dusty-blue))"
-        overlay="rgba(20,32,44,0.42)"
-        minH="65vh"
+        fallbackColor="hsl(212,25%,18%)"
+        overlay="rgba(12,20,30,0.58)"
+        minH="100vh"
       >
-        <div className="text-center px-6 py-20">
+        <div className="flex flex-col items-center justify-center min-h-screen px-6 py-20 text-center">
+
+          {/* Top label */}
           <FadeUp>
             <p
-              className="text-white/60 tracking-[0.35em] uppercase mb-6"
-              style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.6rem" }}
+              style={{
+                fontFamily: "'Montserrat',sans-serif",
+                fontSize: "0.58rem",
+                letterSpacing: "0.4em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.5)",
+                marginBottom: "2.5rem",
+              }}
             >
               Save The Date
             </p>
           </FadeUp>
-          <FadeUp delay={100}>
+
+          {/* Thin top rule */}
+          <FadeUp delay={60}>
+            <div style={{ width: 1, height: 52, background: "rgba(255,255,255,0.25)", margin: "0 auto 2.5rem" }} />
+          </FadeUp>
+
+          {/* Sunday */}
+          <FadeUp delay={120}>
             <p
-              className="text-white leading-none"
               style={{
                 fontFamily: "'Montserrat',sans-serif",
                 fontWeight: 300,
-                fontSize: "clamp(0.9rem,2.5vw,1.1rem)",
-                letterSpacing: "0.25em",
+                fontSize: "clamp(0.75rem,2vw,0.95rem)",
+                letterSpacing: "0.45em",
                 textTransform: "uppercase",
+                color: "rgba(255,255,255,0.65)",
               }}
             >
               Sunday
             </p>
           </FadeUp>
+
+          {/* Big date — "12" */}
           <FadeUp delay={180}>
             <p
-              className="text-white leading-none"
-              style={{
-                fontFamily: "'Great Vibes',cursive",
-                fontSize: "clamp(3.5rem,12vw,7.5rem)",
-              }}
-            >
-              July
-            </p>
-          </FadeUp>
-          <FadeUp delay={240}>
-            <p
-              className="text-white leading-none"
               style={{
                 fontFamily: "'Cormorant Garamond',serif",
                 fontWeight: 300,
-                fontSize: "clamp(4rem,16vw,10rem)",
-                letterSpacing: "-0.02em",
+                fontSize: "clamp(7rem,26vw,16rem)",
+                lineHeight: 0.85,
+                letterSpacing: "-0.03em",
+                color: "white",
+                textShadow: "0 4px 40px rgba(0,0,0,0.4)",
               }}
             >
               12
             </p>
           </FadeUp>
+
+          {/* July in script */}
+          <FadeUp delay={240}>
+            <p
+              style={{
+                fontFamily: "'Great Vibes',cursive",
+                fontSize: "clamp(3rem,11vw,6.5rem)",
+                color: "white",
+                lineHeight: 1,
+                marginTop: "-0.5rem",
+                textShadow: "0 2px 20px rgba(0,0,0,0.3)",
+              }}
+            >
+              July
+            </p>
+          </FadeUp>
+
+          {/* Year */}
           <FadeUp delay={300}>
             <p
-              className="text-white/80 tracking-[0.35em] uppercase mt-3"
-              style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "clamp(0.65rem,2vw,0.85rem)" }}
+              style={{
+                fontFamily: "'Montserrat',sans-serif",
+                fontWeight: 300,
+                fontSize: "clamp(0.75rem,2vw,0.95rem)",
+                letterSpacing: "0.45em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.65)",
+                marginTop: "1rem",
+              }}
             >
               2026
+            </p>
+          </FadeUp>
+
+          {/* Bottom rule */}
+          <FadeUp delay={360}>
+            <div style={{ width: 1, height: 52, background: "rgba(255,255,255,0.25)", margin: "2.5rem auto 2rem" }} />
+          </FadeUp>
+
+          {/* Venue teaser */}
+          <FadeUp delay={420}>
+            <p
+              style={{
+                fontFamily: "'Cormorant Garamond',serif",
+                fontStyle: "italic",
+                fontSize: "clamp(0.9rem,2.5vw,1.15rem)",
+                color: "rgba(255,255,255,0.6)",
+                letterSpacing: "0.04em",
+              }}
+            >
+              Our Lady of Peace Church · Kfarhbab
             </p>
           </FadeUp>
         </div>
@@ -575,33 +634,63 @@ const WeddingDetails = () => {
       {/* ── 8. FOOTER ── */}
       <FullBleed
         bgKey="footer"
-        fallbackColor="hsl(var(--dusty-blue-darker))"
-        overlay="rgba(20,30,40,0.5)"
-        minH="50vh"
+        fallbackColor="hsl(212,30%,16%)"
+        overlay="rgba(8,16,24,0.52)"
+        minH="100vh"
       >
-        <div className="text-center py-20 px-6">
+        <div className="flex flex-col items-center justify-center min-h-screen text-center px-6 py-20">
+          <motion.div
+            style={{ width: 1, height: 60, background: "rgba(255,255,255,0.2)", margin: "0 auto 2rem" }}
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          />
+          <motion.p
+            style={{
+              fontFamily: "'Montserrat',sans-serif",
+              fontSize: "0.58rem",
+              letterSpacing: "0.4em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.45)",
+              marginBottom: "1.5rem",
+            }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Together Forever
+          </motion.p>
           <motion.p
             className="text-white"
-            style={{ fontFamily: "'Great Vibes',cursive", fontSize: "clamp(3rem,10vw,5.5rem)" }}
-            initial={{ opacity: 0, y: 16 }}
+            style={{ fontFamily: "'Great Vibes',cursive", fontSize: "clamp(3.5rem,12vw,6.5rem)", lineHeight: 1.1 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
           >
             Bob &amp; Marianne
           </motion.p>
           <motion.p
-            className="text-white/60 mt-3 tracking-[0.35em] uppercase"
+            className="text-white/60 mt-5 tracking-[0.4em] uppercase"
             style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.68rem" }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.3 }}
+            transition={{ duration: 1, delay: 0.6 }}
           >
             12 · 07 · 2026
           </motion.p>
+          <motion.div
+            style={{ width: 1, height: 60, background: "rgba(255,255,255,0.2)", margin: "2rem auto 0" }}
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          />
           <motion.p
-            className="text-white/40 mt-2"
+            className="text-white/40 mt-4"
             style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.55rem", letterSpacing: "0.15em" }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -612,6 +701,7 @@ const WeddingDetails = () => {
           </motion.p>
         </div>
       </FullBleed>
+
     </div>
   );
 };

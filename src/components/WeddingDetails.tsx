@@ -14,9 +14,9 @@ import CountdownTimer from "./CountdownTimer";
  *   wedding-couple-3.jpg  →  footer bg
  * ─────────────────────────────────────────────────────────────────────────────
  */
-import heroBg   from "@/assets/wedding-couple-1.jpg";
-import dateBg   from "@/assets/wedding-couple-2.jpg";
-import footerBg from "@/assets/wedding-couple-3.jpg";
+import heroBg   from "@/assets/IMG_2745.webp";   // chapel exterior — _2745
+import dateBg   from "@/assets/IMG_2741.webp";   // date section
+import footerBg from "@/assets/IMG_2750.webp";   // footer
 
 /* ─── Scroll-reveal ─────────────────────────────────────────────────────── */
 const useScrollReveal = (ref: React.RefObject<HTMLElement | null>) => {

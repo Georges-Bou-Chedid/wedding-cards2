@@ -12,7 +12,7 @@ const GOOGLE_SCRIPT_URL =
 const GUEST_NAMES = [
   "Charbel Nader",
   "Marianne Mouzaya",
-  "Ibrahim Abi Khalil",
+  "Bob Abi Khalil",
   "Mansour Abi Khalil",
   "Caroline Abi Khalil",
   "Youssef Mouzaya",

@@ -2,18 +2,31 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-/* ─────────────────────────────────────────────────────────────────────────
-   CAROUSEL IMAGES  —  5 slots.
-   Replace the `src` values with your actual image URLs.
-   Keep `placeholder: true` until you have the real image; the placeholder
-   tile will render in its place so the layout is preserved.
-───────────────────────────────────────────────────────────────────────── */
+/*
+ * ─── CAROUSEL PHOTOS ─────────────────────────────────────────────────────────
+ * The first 3 slots use your existing engagement photos.
+ * To replace them with your own:
+ *   1. Drop your JPEG files into  src/assets/
+ *   2. Update the import statements below
+ *   3. Set  placeholder: false  for each entry
+ *
+ * To add more photos, duplicate any entry, import your file, and set its src.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+import couple1 from "@/assets/wedding-couple-1.jpg";   // Replace: rename your photo to this file
+import couple2 from "@/assets/wedding-couple-2.jpg";   // Replace: rename your photo to this file
+import couple3 from "@/assets/wedding-couple-3.jpg";   // Replace: rename your photo to this file
+
 const SLIDES: { src: string; alt: string; placeholder?: boolean }[] = [
-  { src: "", alt: "Celebration photo 1", placeholder: true },
-  { src: "", alt: "Celebration photo 2", placeholder: true },
-  { src: "", alt: "Celebration photo 3", placeholder: true },
-  { src: "", alt: "Celebration photo 4", placeholder: true },
-  { src: "", alt: "Celebration photo 5", placeholder: true },
+  { src: couple1, alt: "Bob & Marianne", placeholder: false },
+  { src: couple2, alt: "Bob & Marianne", placeholder: false },
+  { src: couple3, alt: "Bob & Marianne", placeholder: false },
+  /* ── Add your remaining photos below ───────────────────────────
+     import couple4 from "@/assets/wedding-couple-4.jpg";
+     then add:  { src: couple4, alt: "Bob & Marianne", placeholder: false },
+  ────────────────────────────────────────────────────────────── */
+  { src: "", alt: "Photo 4", placeholder: true },
+  { src: "", alt: "Photo 5", placeholder: true },
 ];
 
 const PlaceholderSlide = ({ index }: { index: number }) => (
@@ -72,7 +85,6 @@ const PhotoGallery = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /* Touch / swipe support */
   const touchStartX = useRef(0);
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.changedTouches[0].screenX;
@@ -96,10 +108,9 @@ const PhotoGallery = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
     >
-      {/* Slide container */}
       <div
-        className="relative overflow-hidden rounded-sm"
-        style={{ height: "min(58vw, 440px)" }}
+        className="relative overflow-hidden rounded-sm shadow-lg"
+        style={{ height: "min(60vw, 460px)" }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -126,7 +137,6 @@ const PhotoGallery = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Prev / Next buttons */}
         {[
           { dir: -1, icon: <ChevronLeft className="w-5 h-5" />, side: "left-3" },
           { dir: 1, icon: <ChevronRight className="w-5 h-5" />, side: "right-3" },
@@ -135,7 +145,7 @@ const PhotoGallery = () => {
             key={dir}
             onClick={() => navigate(dir)}
             className={`absolute ${side} top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-200 hover:scale-110`}
-            style={{ background: "rgba(255,255,255,0.82)", color: "hsl(var(--dusty-blue-dark))" }}
+            style={{ background: "rgba(255,255,255,0.85)", color: "hsl(var(--dusty-blue-dark))" }}
             aria-label={dir > 0 ? "Next photo" : "Previous photo"}
           >
             {icon}
@@ -143,7 +153,6 @@ const PhotoGallery = () => {
         ))}
       </div>
 
-      {/* Dot indicators */}
       <div className="flex justify-center gap-2 mt-4">
         {SLIDES.map((_, i) => (
           <button
@@ -154,10 +163,7 @@ const PhotoGallery = () => {
             style={{
               width: i === current ? 20 : 6,
               height: 6,
-              background:
-                i === current
-                  ? "hsl(var(--dusty-blue))"
-                  : "hsl(var(--dusty-blue-pale))",
+              background: i === current ? "hsl(var(--dusty-blue))" : "hsl(var(--dusty-blue-pale))",
             }}
           />
         ))}

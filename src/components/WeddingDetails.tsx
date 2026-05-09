@@ -5,6 +5,15 @@ import RSVPForm from "./RSVPForm";
 import GiftRegistry from "./GiftRegistry";
 import PhotoGallery from "./PhotoGallery";
 
+/*
+ * ─── HERO BACKGROUND IMAGE ────────────────────────────────────────────────────
+ * Replace the file  src/assets/wedding-couple-1.jpg  with your photo _2745
+ * (just rename _2745.jpg → wedding-couple-1.jpg and drop it in that folder).
+ * The import below will then automatically use it.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+import heroBg from "@/assets/wedding-couple-1.jpg";
+
 /* ─── Scroll-triggered fade-up ─────────────────────────────────────────── */
 const useScrollReveal = (ref: React.RefObject<HTMLElement | null>) => {
   useEffect(() => {
@@ -93,10 +102,16 @@ const MapBtn = ({ href, children }: { href: string; children: React.ReactNode })
      date   → Date section with "12 July 2026"
      footer → Footer section
 ───────────────────────────────────────────────────────────────────────── */
+/*
+ * BG — background image config for full-bleed sections.
+ *   hero   → already uses your imported couple photo (see import above).
+ *   date   → add a URL or import another photo: { src: yourDateBg, placeholder: false }
+ *   footer → same as date
+ */
 const BG: Record<string, { src: string; placeholder: boolean }> = {
-  hero:   { src: "", placeholder: true },
-  date:   { src: "", placeholder: true },
-  footer: { src: "", placeholder: true },
+  hero:   { src: heroBg,  placeholder: false },
+  date:   { src: "",      placeholder: true  },
+  footer: { src: "",      placeholder: true  },
 };
 
 /* ─── Hero / full-bleed section helper ─────────────────────────────────── */
@@ -300,7 +315,7 @@ const WeddingDetails = () => {
                   letterSpacing: "0.06em",
                 }}
               >
-                Ibrahim
+                Bob
               </p>
               <p
                 className="text-dusty-blue"
@@ -524,7 +539,7 @@ const WeddingDetails = () => {
                     className="text-foreground"
                     style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "1.15rem" }}
                   >
-                    Ibrahim's Family
+                    Bob's Family
                   </p>
                 </div>
                 <MapBtn href="https://www.google.com/maps?q=34.010582,35.654316">
@@ -573,7 +588,7 @@ const WeddingDetails = () => {
             viewport={{ once: true }}
             transition={{ duration: 1 }}
           >
-            Ibrahim &amp; Marianne
+            Bob &amp; Marianne
           </motion.p>
           <motion.p
             className="text-white/60 mt-3 tracking-[0.35em] uppercase"

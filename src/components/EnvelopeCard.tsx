@@ -5,7 +5,7 @@ interface EnvelopeCardProps {
   onOpen: () => void;
 }
 
-/* ─── Full-screen embossed botanical SVG ──────────────────────────────── */
+/* ─── Full-screen botanical SVG — white lines on dusty blue ───────────── */
 const EmbossedBotanical = () => (
   <svg
     className="absolute inset-0 w-full h-full pointer-events-none"
@@ -14,225 +14,203 @@ const EmbossedBotanical = () => (
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
   >
-    {/* ── Top-left corner botanical ── */}
-    <g transform="translate(-10, -10)" fill="none" stroke="#D8CEBC" strokeWidth="1.2">
-      <path d="M10,120 C20,95 32,70 46,44" />
-      <path d="M46,44 C52,28 64,20 74,32 C84,44 76,62 58,68" />
-      <path d="M46,44 C36,28 22,24 16,36 C10,48 18,64 36,68" />
-      <path d="M26,82 C14,72 2,76 4,88 C6,100 18,106 30,98" />
-      <path d="M26,82 C38,72 50,76 46,88 C42,100 30,104 20,96" />
-      <circle cx="46" cy="38" r="5" fill="#D8CEBC" stroke="none" />
-      <circle cx="2" cy="87" r="3.5" fill="#D8CEBC" stroke="none" />
-      <circle cx="48" cy="87" r="3.5" fill="#D8CEBC" stroke="none" />
-      <path d="M60,50 C68,38 80,40 82,52" />
-      <circle cx="82" cy="52" r="2.5" fill="#D8CEBC" stroke="none" />
-      <path d="M10,120 C4,108 0,90 6,76" strokeWidth="0.8" />
-      <path d="M30,140 C22,128 14,110 16,94" strokeWidth="0.7" />
+    {/* ── Top-left sprig ── */}
+    <g transform="translate(-10,-10)" fill="none" stroke="rgba(255,255,255,0.28)" strokeWidth="1.3">
+      <path d="M10,130 C22,100 36,72 50,48" />
+      <path d="M50,48 C58,30 72,22 82,36 C92,50 82,68 62,74" />
+      <path d="M50,48 C38,30 22,26 16,40 C10,54 20,70 40,74" />
+      <path d="M28,90 C14,78 0,82 2,96 C4,110 18,116 32,106" />
+      <path d="M28,90 C42,78 56,82 52,96 C48,110 34,114 24,104" />
+      <circle cx="50" cy="40" r="5.5" fill="rgba(255,255,255,0.22)" stroke="none" />
+      <circle cx="0"  cy="95" r="4"   fill="rgba(255,255,255,0.18)" stroke="none" />
+      <circle cx="54" cy="95" r="4"   fill="rgba(255,255,255,0.18)" stroke="none" />
+      <path d="M64,56 C74,42 88,44 90,58" />
+      <circle cx="90" cy="58" r="3" fill="rgba(255,255,255,0.16)" stroke="none" />
     </g>
 
-    {/* ── Top-right corner botanical ── */}
-    <g transform="translate(400, -10) scale(-1,1)" fill="none" stroke="#D8CEBC" strokeWidth="1.2">
-      <path d="M10,120 C20,95 32,70 46,44" />
-      <path d="M46,44 C52,28 64,20 74,32 C84,44 76,62 58,68" />
-      <path d="M46,44 C36,28 22,24 16,36 C10,48 18,64 36,68" />
-      <path d="M26,82 C14,72 2,76 4,88 C6,100 18,106 30,98" />
-      <path d="M26,82 C38,72 50,76 46,88 C42,100 30,104 20,96" />
-      <circle cx="46" cy="38" r="5" fill="#D8CEBC" stroke="none" />
-      <circle cx="2" cy="87" r="3.5" fill="#D8CEBC" stroke="none" />
-      <circle cx="48" cy="87" r="3.5" fill="#D8CEBC" stroke="none" />
-      <path d="M60,50 C68,38 80,40 82,52" />
-      <circle cx="82" cy="52" r="2.5" fill="#D8CEBC" stroke="none" />
+    {/* ── Top-right sprig (mirror) ── */}
+    <g transform="translate(400,-10) scale(-1,1)" fill="none" stroke="rgba(255,255,255,0.28)" strokeWidth="1.3">
+      <path d="M10,130 C22,100 36,72 50,48" />
+      <path d="M50,48 C58,30 72,22 82,36 C92,50 82,68 62,74" />
+      <path d="M50,48 C38,30 22,26 16,40 C10,54 20,70 40,74" />
+      <path d="M28,90 C14,78 0,82 2,96 C4,110 18,116 32,106" />
+      <path d="M28,90 C42,78 56,82 52,96 C48,110 34,114 24,104" />
+      <circle cx="50" cy="40" r="5.5" fill="rgba(255,255,255,0.22)" stroke="none" />
+      <circle cx="0"  cy="95" r="4"   fill="rgba(255,255,255,0.18)" stroke="none" />
+      <circle cx="54" cy="95" r="4"   fill="rgba(255,255,255,0.18)" stroke="none" />
     </g>
 
-    {/* ── Bottom-left corner botanical ── */}
-    <g transform="translate(-10, 854) scale(1,-1)" fill="none" stroke="#D8CEBC" strokeWidth="1.1">
-      <path d="M10,110 C20,88 30,64 42,40" />
-      <path d="M42,40 C48,24 60,18 70,30 C80,42 72,60 54,64" />
-      <path d="M42,40 C32,24 18,20 14,34 C10,48 18,62 34,64" />
-      <circle cx="42" cy="34" r="4.5" fill="#D8CEBC" stroke="none" />
-      <path d="M22,76 C10,66 -2,70 0,82" strokeWidth="1" />
-      <circle cx="0" cy="82" r="3" fill="#D8CEBC" stroke="none" />
+    {/* ── Bottom-left sprig ── */}
+    <g transform="translate(-10,854) scale(1,-1)" fill="none" stroke="rgba(255,255,255,0.24)" strokeWidth="1.2">
+      <path d="M10,110 C22,86 34,64 46,42" />
+      <path d="M46,42 C54,24 66,18 76,32 C86,46 76,62 56,66" />
+      <path d="M46,42 C36,24 20,20 16,36 C12,52 22,66 40,68" />
+      <circle cx="46" cy="35" r="5" fill="rgba(255,255,255,0.18)" stroke="none" />
     </g>
 
-    {/* ── Bottom-right corner botanical ── */}
-    <g transform="translate(400, 854) scale(-1,-1)" fill="none" stroke="#D8CEBC" strokeWidth="1.1">
-      <path d="M10,110 C20,88 30,64 42,40" />
-      <path d="M42,40 C48,24 60,18 70,30 C80,42 72,60 54,64" />
-      <path d="M42,40 C32,24 18,20 14,34 C10,48 18,62 34,64" />
-      <circle cx="42" cy="34" r="4.5" fill="#D8CEBC" stroke="none" />
-      <path d="M22,76 C10,66 -2,70 0,82" strokeWidth="1" />
-      <circle cx="0" cy="82" r="3" fill="#D8CEBC" stroke="none" />
+    {/* ── Bottom-right sprig ── */}
+    <g transform="translate(400,854) scale(-1,-1)" fill="none" stroke="rgba(255,255,255,0.24)" strokeWidth="1.2">
+      <path d="M10,110 C22,86 34,64 46,42" />
+      <path d="M46,42 C54,24 66,18 76,32 C86,46 76,62 56,66" />
+      <path d="M46,42 C36,24 20,20 16,36 C12,52 22,66 40,68" />
+      <circle cx="46" cy="35" r="5" fill="rgba(255,255,255,0.18)" stroke="none" />
     </g>
 
-    {/* ── Centre floral wreath / motif ── */}
-    <g transform="translate(195, 400)" fill="none" stroke="#D8CEBC" strokeWidth="1">
-      {/* Outer decorative ring */}
-      <circle cx="0" cy="0" r="96" strokeWidth="0.6" strokeDasharray="4 6" />
-      {/* Four botanical sprigs at compass points */}
-      {[0, 90, 180, 270].map((deg) => (
+    {/* ── Centre floral wreath ── */}
+    <g transform="translate(195,400)" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1">
+      <circle cx="0" cy="0" r="108" strokeWidth="0.6" strokeDasharray="5 8" />
+      <circle cx="0" cy="0" r="82"  strokeWidth="0.4" strokeDasharray="3 6" />
+      {[0,90,180,270].map((deg) => (
         <g key={deg} transform={`rotate(${deg})`}>
-          <path d="M0,-96 C4,-80 6,-64 4,-48" strokeWidth="0.8" />
-          <path d="M4,-72 C10,-66 16,-68 16,-60" strokeWidth="0.7" />
-          <path d="M4,-72 C-2,-66 -8,-68 -8,-60" strokeWidth="0.7" />
-          <circle cx="0" cy="-100" r="2.5" fill="#D8CEBC" stroke="none" />
+          <path d="M0,-110 C4,-92 6,-72 4,-54" strokeWidth="0.9" />
+          <path d="M4,-80 C12,-72 18,-74 18,-64" strokeWidth="0.7" />
+          <path d="M4,-80 C-4,-72 -10,-74 -10,-64" strokeWidth="0.7" />
+          <circle cx="0" cy="-115" r="3" fill="rgba(255,255,255,0.18)" stroke="none" />
         </g>
       ))}
-      {/* Leaf pairs at diagonals */}
-      {[45, 135, 225, 315].map((deg) => (
+      {[45,135,225,315].map((deg) => (
         <g key={deg} transform={`rotate(${deg})`}>
-          <path d="M0,-78 C6,-72 8,-62 4,-56" strokeWidth="0.7" />
-          <path d="M0,-78 C-6,-72 -8,-62 -4,-56" strokeWidth="0.7" />
+          <path d="M0,-88 C8,-80 10,-68 6,-60" strokeWidth="0.7" />
+          <path d="M0,-88 C-8,-80 -10,-68 -6,-60" strokeWidth="0.7" />
         </g>
       ))}
     </g>
 
-    {/* ── Subtle vine border along all four edges ── */}
-    <path
-      d="M30,0 Q60,12 90,4 Q120,-4 150,8 Q180,20 210,10 Q240,0 270,12 Q300,24 330,14 Q360,4 390,16"
-      fill="none" stroke="#D8CEBC" strokeWidth="0.7" opacity="0.7"
-    />
-    <path
-      d="M30,844 Q60,832 90,840 Q120,848 150,836 Q180,824 210,834 Q240,844 270,832 Q300,820 330,830 Q360,840 390,828"
-      fill="none" stroke="#D8CEBC" strokeWidth="0.7" opacity="0.7"
-    />
-    <path
-      d="M0,30 Q12,60 4,90 Q-4,120 8,150 Q20,180 10,210 Q0,240 12,270 Q24,300 14,330 Q4,360 16,390"
-      fill="none" stroke="#D8CEBC" strokeWidth="0.7" opacity="0.7"
-    />
-    <path
-      d="M390,30 Q378,60 386,90 Q394,120 382,150 Q370,180 380,210 Q390,240 378,270 Q366,300 376,330 Q386,360 374,390"
-      fill="none" stroke="#D8CEBC" strokeWidth="0.7" opacity="0.7"
-    />
+    {/* ── Edge vine borders ── */}
+    <path d="M30,0 Q65,14 100,4 Q135,-6 170,8 Q205,22 240,10 Q275,-2 310,12 Q345,26 390,14"
+      fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="0.8" />
+    <path d="M30,844 Q65,830 100,840 Q135,850 170,838 Q205,826 240,836 Q275,846 310,834 Q345,822 390,832"
+      fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="0.8" />
+    <path d="M0,30 Q14,68 4,106 Q-6,144 8,182 Q22,220 10,258 Q-2,296 12,334 Q26,372 14,410"
+      fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="0.8" />
+    <path d="M390,30 Q376,68 386,106 Q396,144 382,182 Q368,220 380,258 Q392,296 378,334 Q364,372 376,410"
+      fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="0.8" />
 
-    {/* ── Inner frame border ── */}
-    <rect x="16" y="16" width="358" height="812" rx="2" fill="none" stroke="#D8CEBC" strokeWidth="0.8" />
-    <rect x="22" y="22" width="346" height="800" rx="1" fill="none" stroke="#D8CEBC" strokeWidth="0.4" />
+    {/* ── Double border frame ── */}
+    <rect x="14" y="14" width="362" height="816" rx="2" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="0.9" />
+    <rect x="20" y="20" width="350" height="804" rx="1" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
   </svg>
 );
 
-/* ─── Envelope fold triangles (cream-on-cream) ────────────────────────── */
+/* ─── Envelope fold shadows ───────────────────────────────────────────── */
 const EnvelopeFolds = () => (
   <>
-    {/* Left fold */}
-    <div
-      className="absolute top-0 bottom-0 left-0 pointer-events-none"
-      style={{
-        width: "50%",
-        clipPath: "polygon(0 0, 0 100%, 100% 50%)",
-        background: "rgba(200,186,168,0.18)",
-      }}
-    />
-    {/* Right fold */}
-    <div
-      className="absolute top-0 bottom-0 right-0 pointer-events-none"
-      style={{
-        width: "50%",
-        clipPath: "polygon(100% 0, 100% 100%, 0 50%)",
-        background: "rgba(200,186,168,0.18)",
-      }}
-    />
-    {/* Bottom fold */}
-    <div
-      className="absolute bottom-0 left-0 right-0 pointer-events-none"
-      style={{
-        height: "50%",
-        clipPath: "polygon(0 100%, 50% 0, 100% 100%)",
-        background: "rgba(200,186,168,0.13)",
-      }}
-    />
+    <div className="absolute top-0 bottom-0 left-0 pointer-events-none" style={{
+      width: "50%",
+      clipPath: "polygon(0 0,0 100%,100% 50%)",
+      background: "rgba(0,0,0,0.10)",
+    }} />
+    <div className="absolute top-0 bottom-0 right-0 pointer-events-none" style={{
+      width: "50%",
+      clipPath: "polygon(100% 0,100% 100%,0 50%)",
+      background: "rgba(0,0,0,0.10)",
+    }} />
+    <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{
+      height: "50%",
+      clipPath: "polygon(0 100%,50% 0,100% 100%)",
+      background: "rgba(0,0,0,0.08)",
+    }} />
   </>
 );
 
-/* ─── Wax Seal — dusty blue ───────────────────────────────────────────── */
+/* ─── Wax Seal — prominent BM ────────────────────────────────────────── */
 const WaxSeal = () => (
   <div className="relative flex items-center justify-center">
-    {/* Outer decorative ring */}
-    <div
-      className="absolute rounded-full"
-      style={{
-        width: 96,
-        height: 96,
-        background:
-          "conic-gradient(from 0deg, hsl(212,20%,44%), hsl(212,18%,56%), hsl(212,16%,50%), hsl(212,20%,44%), hsl(212,18%,56%), hsl(212,16%,50%), hsl(212,20%,44%))",
-        boxShadow: "0 6px 24px rgba(108,130,150,0.40), 0 2px 8px rgba(0,0,0,0.18)",
-      }}
-    />
+    {/* Shadow ring */}
+    <div className="absolute rounded-full" style={{
+      width: 112, height: 112,
+      background: "rgba(0,0,0,0.22)",
+      filter: "blur(8px)",
+      top: 8,
+    }} />
+    {/* Conic outer ring */}
+    <div className="absolute rounded-full" style={{
+      width: 112, height: 112,
+      background: "conic-gradient(from 0deg,hsl(212,22%,36%),hsl(212,18%,48%),hsl(212,22%,38%),hsl(212,20%,50%),hsl(212,22%,36%))",
+      boxShadow: "0 8px 28px rgba(0,0,0,0.35)",
+    }} />
     {/* Main seal body */}
-    <div
-      className="relative flex items-center justify-center rounded-full z-10"
-      style={{
-        width: 84,
-        height: 84,
-        background:
-          "radial-gradient(ellipse at 36% 30%, hsl(212,22%,68%), hsl(212,18%,58%) 50%, hsl(212,20%,46%))",
-        boxShadow:
-          "inset 0 3px 6px rgba(255,255,255,0.25), inset 0 -3px 6px rgba(0,0,0,0.25)",
-      }}
-    >
-      {/* Inner ring */}
-      <div
-        className="absolute rounded-full"
-        style={{ inset: 8, border: "1px solid rgba(255,255,255,0.35)" }}
-      />
-      {/* Monogram */}
-      <span
-        style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontStyle: "italic",
-          fontWeight: 400,
-          fontSize: "1.55rem",
-          color: "rgba(255,255,255,0.96)",
-          letterSpacing: "0.04em",
-          textShadow: "0 1px 4px rgba(0,0,0,0.35)",
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
+    <div className="relative z-10 flex items-center justify-center rounded-full" style={{
+      width: 98, height: 98,
+      background: "radial-gradient(ellipse at 36% 30%,hsl(212,22%,54%),hsl(212,18%,44%) 55%,hsl(212,22%,34%))",
+      boxShadow: "inset 0 3px 8px rgba(255,255,255,0.22),inset 0 -3px 8px rgba(0,0,0,0.3)",
+    }}>
+      {/* Inner decorative ring */}
+      <div className="absolute rounded-full" style={{
+        inset: 9,
+        border: "1.5px solid rgba(255,255,255,0.4)",
+      }} />
+      {/* Second inner ring */}
+      <div className="absolute rounded-full" style={{
+        inset: 14,
+        border: "0.5px solid rgba(255,255,255,0.2)",
+      }} />
+      {/* BM monogram — large and clear */}
+      <span style={{
+        fontFamily: "'Cormorant Garamond',serif",
+        fontStyle: "italic",
+        fontWeight: 500,
+        fontSize: "1.85rem",
+        color: "rgba(255,255,255,0.97)",
+        letterSpacing: "0.05em",
+        textShadow: "0 1px 6px rgba(0,0,0,0.45)",
+        position: "relative",
+        zIndex: 2,
+        lineHeight: 1,
+      }}>
         BM
       </span>
     </div>
   </div>
 );
 
-/* ─── Main EnvelopeCard ───────────────────────────────────────────────── */
+/* ─── Diagonal thread ─────────────────────────────────────────────────── */
+const DiagonalThread = () => (
+  <svg
+    className="absolute inset-0 w-full h-full pointer-events-none"
+    viewBox="0 0 390 844"
+    preserveAspectRatio="xMidYMid slice"
+    aria-hidden="true"
+  >
+    <line
+      x1="290" y1="180" x2="100" y2="660"
+      stroke="rgba(255,255,255,0.2)"
+      strokeWidth="1.5"
+    />
+  </svg>
+);
+
+/* ─── Main component ──────────────────────────────────────────────────── */
 const EnvelopeCard = ({ onOpen }: EnvelopeCardProps) => {
   const [isOpening, setIsOpening] = useState(false);
 
   const handleClick = () => {
     if (isOpening) return;
     setIsOpening(true);
-    setTimeout(onOpen, 2200);
+    setTimeout(onOpen, 2400);
   };
 
   return (
     <div
       className="fixed inset-0 z-50 overflow-hidden cursor-pointer select-none"
-      style={{ background: "hsl(var(--ivory))" }}
+      style={{ background: "hsl(var(--dusty-blue))" }}
       onClick={handleClick}
     >
-      {/* ── Embossed botanical SVG (full coverage) ── */}
+      {/* Radial highlight */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "radial-gradient(ellipse at 50% 42%,rgba(255,255,255,0.08) 0%,transparent 65%)",
+      }} />
+
+      {/* Botanical overlay */}
       <EmbossedBotanical />
 
-      {/* ── Fold shadow triangles ── */}
+      {/* Fold shadows */}
       <EnvelopeFolds />
 
-      {/* ── Diagonal ribbon / thread ── */}
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        viewBox="0 0 390 844"
-        preserveAspectRatio="xMidYMid slice"
-        aria-hidden="true"
-      >
-        <line
-          x1="260" y1="200"
-          x2="130" y2="600"
-          stroke="hsl(var(--warm-beige))"
-          strokeWidth="1.5"
-          opacity="0.6"
-        />
-      </svg>
+      {/* Diagonal thread */}
+      <DiagonalThread />
 
-      {/* ── Top flap (the triangle that rotates back) ── */}
+      {/* Top flap — rotates backward on open */}
       <motion.div
         className="absolute left-0 right-0 top-0"
         style={{
@@ -240,196 +218,66 @@ const EnvelopeCard = ({ onOpen }: EnvelopeCardProps) => {
           transformOrigin: "top center",
           transformStyle: "preserve-3d",
           zIndex: 20,
-          perspective: 1200,
         }}
-        animate={isOpening ? { rotateX: -170 } : {}}
-        transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }}
+        animate={isOpening ? { rotateX: -175 } : {}}
+        transition={{ duration: 1.0, ease: [0.4, 0, 0.2, 1] }}
       >
-        {/* Flap surface */}
-        <div
-          className="w-full h-full"
-          style={{
-            clipPath: "polygon(0 0, 100% 0, 50% 100%)",
-            background: "linear-gradient(175deg, hsl(40,18%,93%), hsl(38,12%,90%))",
-            backfaceVisibility: "hidden",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-          }}
-        />
-        {/* Embossed on the flap too */}
-        <div
-          className="absolute inset-0 w-full h-full overflow-hidden"
-          style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}
-        >
-          <svg viewBox="0 0 390 388" className="w-full h-full" aria-hidden="true">
-            {/* Flap botanical */}
-            <g transform="translate(195, 60)" fill="none" stroke="#D0C4B0" strokeWidth="1">
-              <path d="M0,0 C8,20 10,40 6,56" />
-              <path d="M6,30 C14,24 22,26 22,36" />
-              <path d="M6,30 C-2,24 -10,26 -10,36" />
-              <circle cx="0" cy="-4" r="4" fill="#D0C4B0" stroke="none" />
-              <circle cx="22" cy="36" r="2.5" fill="#D0C4B0" stroke="none" />
-              <circle cx="-10" cy="36" r="2.5" fill="#D0C4B0" stroke="none" />
-            </g>
-          </svg>
-        </div>
+        <div className="w-full h-full" style={{
+          clipPath: "polygon(0 0,100% 0,50% 100%)",
+          background: "linear-gradient(175deg,hsl(212,18%,58%),hsl(212,18%,52%))",
+          backfaceVisibility: "hidden",
+        }} />
       </motion.div>
 
-      {/* ── Inner card (rises when flap opens) ── */}
+      {/* Inner card — plain, no text */}
       <motion.div
-        className="absolute rounded-sm overflow-hidden"
+        className="absolute rounded-sm"
         style={{
-          left: 24,
-          right: 24,
-          top: 80,
-          bottom: 60,
-          background: "hsl(var(--cream))",
+          left: 28, right: 28, top: 90, bottom: 60,
+          background: "hsl(var(--ivory))",
           zIndex: 5,
-          boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
+          boxShadow: "0 2px 24px rgba(0,0,0,0.18)",
         }}
-        animate={isOpening ? { y: "-55vh", opacity: 0.5 } : {}}
-        transition={{ duration: 1.1, delay: 0.55, ease: [0.4, 0, 0.2, 1] }}
-      >
-        <div className="flex items-center justify-center h-full">
-          <div className="text-center px-8">
-            <p
-              style={{
-                fontFamily: "'Montserrat',sans-serif",
-                fontSize: "0.58rem",
-                letterSpacing: "0.3em",
-                textTransform: "uppercase",
-                color: "hsl(var(--dusty-blue))",
-                marginBottom: "1rem",
-              }}
-            >
-              You Are Invited
-            </p>
-            <p
-              style={{
-                fontFamily: "'Cormorant Garamond',serif",
-                fontWeight: 300,
-                fontSize: "2.2rem",
-                letterSpacing: "0.06em",
-                color: "hsl(var(--foreground))",
-                lineHeight: 1,
-              }}
-            >
-              Bob
-            </p>
-            <p
-              style={{
-                fontFamily: "'Great Vibes',cursive",
-                fontSize: "1.8rem",
-                color: "hsl(var(--dusty-blue))",
-                lineHeight: 1.2,
-              }}
-            >
-              &amp;
-            </p>
-            <p
-              style={{
-                fontFamily: "'Great Vibes',cursive",
-                fontSize: "2.6rem",
-                color: "hsl(var(--foreground))",
-                lineHeight: 1,
-              }}
-            >
-              Marianne
-            </p>
-            <p
-              style={{
-                fontFamily: "'Montserrat',sans-serif",
-                fontSize: "0.58rem",
-                letterSpacing: "0.25em",
-                color: "hsl(var(--muted-foreground))",
-                marginTop: "1rem",
-              }}
-            >
-              12 · 07 · 2026
-            </p>
-          </div>
-        </div>
-      </motion.div>
+        animate={isOpening ? { y: "-58vh", opacity: 0.4 } : {}}
+        transition={{ duration: 1.2, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      />
 
-      {/* ── Wax seal + names + text (front face) ── */}
+      {/* Wax seal — centred */}
       <motion.div
-        className="absolute inset-0 flex flex-col items-center justify-center z-10"
+        className="absolute inset-0 flex items-center justify-center z-10"
         style={{ pointerEvents: "none" }}
-        animate={isOpening ? { opacity: 0 } : {}}
-        transition={{ duration: 0.4, delay: 0.2 }}
+        animate={isOpening ? { scale: 0, opacity: 0, rotate: 20 } : {}}
+        transition={{ duration: 0.5, ease: "easeIn" }}
       >
         <WaxSeal />
-
-        <p
-          className="mt-5 text-center"
-          style={{
-            fontFamily: "'Cormorant Garamond',serif",
-            fontStyle: "italic",
-            fontSize: "clamp(1rem,3vw,1.25rem)",
-            color: "hsl(var(--muted-foreground))",
-            letterSpacing: "0.04em",
-            lineHeight: 1.7,
-          }}
-        >
-          Requests the pleasure<br />of your company
-        </p>
-
-        <div className="mt-6 text-center">
-          <p
-            style={{
-              fontFamily: "'Cormorant Garamond',serif",
-              fontWeight: 300,
-              fontSize: "clamp(2rem,7vw,3rem)",
-              letterSpacing: "0.1em",
-              color: "hsl(var(--foreground))",
-              lineHeight: 1,
-            }}
-          >
-            Bob
-          </p>
-          <p
-            style={{
-              fontFamily: "'Great Vibes',cursive",
-              fontSize: "clamp(2.8rem,9vw,4rem)",
-              color: "hsl(var(--foreground))",
-              lineHeight: 1.1,
-            }}
-          >
-            &amp; Marianne
-          </p>
-        </div>
       </motion.div>
 
-      {/* ── Tap hint ── */}
+      {/* Chevron hint — no text, just an animated icon */}
       <AnimatePresence>
         {!isOpening && (
           <motion.div
-            className="absolute bottom-10 left-0 right-0 flex flex-col items-center gap-2 z-30"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="absolute bottom-9 left-0 right-0 flex flex-col items-center gap-1 z-30 pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
+            transition={{ delay: 1, duration: 0.7 }}
           >
-            <p
-              className="animate-pulse-soft"
-              style={{
-                fontFamily: "'Montserrat',sans-serif",
-                fontSize: "0.58rem",
-                letterSpacing: "0.3em",
-                textTransform: "uppercase",
-                color: "hsl(var(--dusty-blue-dark))",
-              }}
-            >
-              Tap to Open
-            </p>
-            <div
-              className="animate-hint-line w-px bg-dusty-blue"
-              style={{ height: 28, background: "hsl(var(--dusty-blue))" }}
-            />
+            {[0, 1].map((i) => (
+              <motion.div
+                key={i}
+                animate={{ y: [0, 6, 0], opacity: [0.3, 0.9, 0.3] }}
+                transition={{ duration: 1.8, delay: i * 0.3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+                  <path d="M1 1l9 9 9-9" stroke="rgba(255,255,255,0.65)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </motion.div>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* ── Full-screen cream fade-out on open ── */}
+      {/* Full-screen fade to ivory on open */}
       <AnimatePresence>
         {isOpening && (
           <motion.div
@@ -437,7 +285,7 @@ const EnvelopeCard = ({ onOpen }: EnvelopeCardProps) => {
             style={{ background: "hsl(var(--ivory))" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.7 }}
+            transition={{ delay: 1.6, duration: 0.8 }}
           />
         )}
       </AnimatePresence>

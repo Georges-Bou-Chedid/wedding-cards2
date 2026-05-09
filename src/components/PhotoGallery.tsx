@@ -13,11 +13,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
  * To add more photos, duplicate any entry, import your file, and set its src.
  * ─────────────────────────────────────────────────────────────────────────────
  */
-import couple1 from "@/assets/IMG_2742.webp";   // Replace: rename your photo to this file
-import couple2 from "@/assets/IMG_2756.webp";   // Replace: rename your photo to this file
-import couple3 from "@/assets/IMG_2757.webp";   // Replace: rename your photo to this file
-import couple4 from "@/assets/IMG_2747.webp";
-import couple5 from "@/assets/IMG_2749.webp";
+import couple1 from "@/assets/wedding-couple-1.jpg";   // Replace: rename your photo to this file
+import couple2 from "@/assets/wedding-couple-2.jpg";   // Replace: rename your photo to this file
+import couple3 from "@/assets/wedding-couple-3.jpg";   // Replace: rename your photo to this file
 
 /*
  * ─── HOW TO ADD YOUR OWN PHOTOS ─────────────────────────────────────────────
@@ -37,8 +35,6 @@ const SLIDES: { src: string; alt: string; placeholder?: boolean }[] = [
   { src: couple1, alt: "Bob & Marianne — Chapel" },
   { src: couple2, alt: "Bob & Marianne" },
   { src: couple3, alt: "Bob & Marianne" },
-  { src: couple4, alt: "Bob & Marianne" },
-  { src: couple5, alt: "Bob & Marianne" },
   // ── uncomment / add entries here for each additional photo ──
   // { src: couple4, alt: "Bob & Marianne" },
 ];
@@ -124,7 +120,7 @@ const PhotoGallery = () => {
     >
       <div
         className="relative overflow-hidden rounded-sm shadow-lg"
-        style={{ height: "min(60vw, 460px)" }}
+        style={{ height: "min(82vw, 640px)" }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -146,6 +142,8 @@ const PhotoGallery = () => {
                 src={SLIDES[current].src}
                 alt={SLIDES[current].alt}
                 className="w-full h-full object-cover"
+                loading="eager"
+                decoding="async"
               />
             )}
           </motion.div>

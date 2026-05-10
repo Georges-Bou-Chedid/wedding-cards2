@@ -230,7 +230,7 @@ const WeddingDetails = () => (
     <FullBleed
       src={dateBg}
       fallbackColor="hsl(212,25%,16%)"
-      overlay="rgba(10,18,28,0.62)"
+      overlay="rgba(18, 31, 48, 0.62)"
       minH="100vh"
     >
       {/* Using flex-col and justify-between to push the countdown to the bottom */}

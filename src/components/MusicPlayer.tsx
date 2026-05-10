@@ -53,15 +53,15 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
   if (playerRef.current && readyRef.current) {
     // Mobile browsers need to see this call 
     // inside the 'onClick' event stack of the button that opens the invite.
+    playerRef.current.playVideo();
     playerRef.current.mute();
     playerRef.current.playVideo();
     
     // 2. Short delay to ensure the stream is active before unmuting
     setTimeout(() => {
       playerRef.current?.unMute();
-      playerRef.current?.setVolume(100);
       playerRef.current?.seekTo(START_SECONDS, true);
-    }, 150);
+    }, 50);
     setIsPlaying(true);
   } else {
     pendingPlayRef.current = true;

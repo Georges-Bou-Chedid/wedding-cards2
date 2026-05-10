@@ -9,9 +9,12 @@ const Index = () => {
   const musicStartRef = useRef<(() => void) | null>(null);
 
   const handleOpen = () => {
+    if (musicStartRef.current) {
+      musicStartRef.current();
+    }
     setIsOpen(true);
     /* Start YouTube music after user interaction (envelope click) */
-    setTimeout(() => musicStartRef.current?.(), 200);
+    // setTimeout(() => musicStartRef.current?.(), 200);
   };
 
   return (

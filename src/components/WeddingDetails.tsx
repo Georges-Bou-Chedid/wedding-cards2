@@ -17,7 +17,7 @@ import CountdownTimer from "./CountdownTimer";
 import heroBg   from "@/assets/IMG_2745.webp";   // chapel exterior — _2745
 import dateBg   from "@/assets/IMG_2741.webp";   // date section
 import footerBg from "@/assets/IMG_2750.webp";   // footer
-import giftBg   from "@/assets/IMG_2742.webp";
+import giftBg   from "@/assets/IMG_2000.webp";
 
 /* ─── Scroll-reveal ─────────────────────────────────────────────────────── */
 const useScrollReveal = (ref: React.RefObject<HTMLElement | null>) => {
@@ -192,7 +192,7 @@ const WeddingDetails = () => (
               style={{
                 fontFamily: "var(--font-script)",
                 fontWeight: 400,
-                fontSize: "clamp(2.8rem, 8vw, 3rem)",
+                fontSize: "clamp(2rem, 6vw, 2.2rem)",
               }}
             >
               Ibrahim
@@ -201,7 +201,7 @@ const WeddingDetails = () => (
               className="text-dusty-blue"
               style={{ 
                 fontFamily: "var(--font-script)", 
-                fontSize: "clamp(2rem, 6vw, 1.5rem)",
+                fontSize: "clamp(1.5rem, 4vw, 1.4rem)",
                 marginTop: "0.5rem" 
               }}
             >
@@ -212,7 +212,7 @@ const WeddingDetails = () => (
               style={{ 
                 fontFamily: "var(--font-script)", 
                 fontWeight: 400,
-                fontSize: "clamp(2.8rem, 8vw, 3rem)" 
+                fontSize: "clamp(2rem, 6vw, 2.2rem)" 
               }}
             >
               Marianne
@@ -423,25 +423,30 @@ const WeddingDetails = () => (
     </section>
 
     {/* ── 6. WISH ACCOUNT ── */}
-    <div className="w-full">
-      {/* Photo part - reduced height to focus on the image */}
+   <div className="w-full">
+      {/* Photo part - Adjusted background position */}
       <FullBleed 
         src={giftBg} 
         fallbackColor="hsl(var(--dusty-blue-dark))" 
         overlay="rgba(28,38,50,0.3)" 
-        minH="45vh" 
+        minH="120vh" // Increased slightly to show more of the photo
       >
-        <div /> {/* Empty div because the content follows below */}
+        <div style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center 40%' // This moves the "view" down so the top isn't the only thing visible
+        }} />
       </FullBleed>
 
-      {/* Info part - solid background directly under the photo */}
+      {/* Info part */}
       <section 
         className="py-16 px-6 text-center" 
         style={{ background: "hsl(var(--ivory))" }}
       >
         <GiftRegistry />
       </section>
-    </div>
+</div>
 
     {/* ── 7. RSVP ── */}
     <section style={{ background: "hsl(var(--ivory))" }}>

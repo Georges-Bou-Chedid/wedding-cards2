@@ -429,7 +429,7 @@ const WeddingDetails = () => (
         src={giftBg} 
         fallbackColor="hsl(var(--dusty-blue-dark))" 
         overlay="rgba(28,38,50,0.3)" 
-        minH="60vh" 
+        minH="45vh" 
       >
         <div style={{ 
           position: 'absolute', 

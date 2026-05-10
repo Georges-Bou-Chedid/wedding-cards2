@@ -27,6 +27,7 @@ declare global {
     unMute(): void;
     playVideo(): void;
     pauseVideo(): void;
+    setVolume(sec: number): void;
     seekTo(sec: number, allowSeek?: boolean): void;
     getPlayerState(): number;
     destroy(): void;
@@ -58,8 +59,9 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
     // 2. Short delay to ensure the stream is active before unmuting
     setTimeout(() => {
       playerRef.current?.unMute();
+      playerRef.current?.setVolume(100);
       playerRef.current?.seekTo(START_SECONDS, true);
-    }, 100);
+    }, 150);
     setIsPlaying(true);
   } else {
     pendingPlayRef.current = true;
@@ -90,6 +92,8 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
           playlist: VIDEO_ID,
           playsinline: 1,
           enablejsapi: 1,
+          origin: window.location.origin,
+          widget_referrer: window.location.href,
         },
         events: {
           onReady: (e) => {
@@ -140,15 +144,14 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
       {/* Hidden YouTube player container */}
       <div ref={containerRef} 
            style={{ 
-            position: 'fixed', 
-            top: -100, 
-            left: -100, 
-            width: 1, 
-            height: 1, 
+            position: 'absolute', 
+            width: '1px', 
+            height: '1px', 
+            top: '-1000px', 
+            left: '-1000px', 
             opacity: 0, 
             pointerEvents: 'none' 
           }}
-           aria-hidden="true" 
       />
 
       {/* Floating music toggle */}

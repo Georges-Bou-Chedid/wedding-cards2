@@ -80,6 +80,7 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
           rel: 0,
           loop: 1,
           playlist: VIDEO_ID,
+          playsinline: 1,
         },
         events: {
           onReady: (e) => {

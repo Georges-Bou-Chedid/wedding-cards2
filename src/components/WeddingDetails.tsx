@@ -429,14 +429,16 @@ const WeddingDetails = () => (
         src={giftBg} 
         fallbackColor="hsl(var(--dusty-blue-dark))" 
         overlay="rgba(28,38,50,0.3)" 
-        minH="70vh" 
+        minH="60vh" 
       >
         <div style={{ 
           position: 'absolute', 
           inset: 0, 
-          backgroundSize: 'contain', // Change 'cover' to 'contain' to see the whole photo
+          backgroundImage: `url(${giftBg})`,
+          backgroundSize: '100% auto', // This forces the width to fit 100% without zooming
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center' 
+          backgroundPosition: 'center top', // Focuses on the top/center of the photo
+          backgroundColor: 'hsl(var(--dusty-blue-dark))' // Fills gaps if the photo is short
         }} />
       </FullBleed>
 

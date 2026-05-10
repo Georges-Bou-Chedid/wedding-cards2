@@ -423,30 +423,25 @@ const WeddingDetails = () => (
     </section>
 
     {/* ── 6. WISH ACCOUNT ── */}
-   <div className="w-full">
-      {/* Photo part - Adjusted background position */}
+    <div className="w-full">
+      {/* Photo part - reduced height to focus on the image */}
       <FullBleed 
         src={giftBg} 
         fallbackColor="hsl(var(--dusty-blue-dark))" 
         overlay="rgba(28,38,50,0.3)" 
-        minH="95vh" // Increased slightly to show more of the photo
+        minH="95vh" 
       >
-        <div style={{ 
-          position: 'absolute', 
-          inset: 0, 
-          backgroundSize: 'cover', 
-          backgroundPosition: 'center 40%' // This moves the "view" down so the top isn't the only thing visible
-        }} />
+        <div /> {/* Empty div because the content follows below */}
       </FullBleed>
 
-      {/* Info part */}
+      {/* Info part - solid background directly under the photo */}
       <section 
         className="py-16 px-6 text-center" 
         style={{ background: "hsl(var(--ivory))" }}
       >
         <GiftRegistry />
       </section>
-</div>
+    </div>
 
     {/* ── 7. RSVP ── */}
     <section style={{ background: "hsl(var(--ivory))" }}>

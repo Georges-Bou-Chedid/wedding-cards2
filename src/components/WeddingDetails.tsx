@@ -243,7 +243,7 @@ const WeddingDetails = () => (
             {/* Date — 12 */}
             <FadeUp delay={80}>
               <p style={{
-                fontFamily: "var(--font-script)",
+                fontFamily: "'Cormorant Garamond',serif",
                 fontSize: "clamp(2.5rem, 8vw, 5rem)",
                 color: "white",
                 lineHeight: 1,
@@ -256,7 +256,7 @@ const WeddingDetails = () => (
             {/* Month — July */}
             <FadeUp delay={160}>
               <p style={{
-                fontFamily: "var(--font-script)",
+                fontFamily: "'Cormorant Garamond',serif",
                 fontSize: "clamp(2.5rem, 8vw, 5rem)",
                 color: "white",
                 lineHeight: 1,
@@ -269,7 +269,7 @@ const WeddingDetails = () => (
             {/* Year — 2026 */}
             <FadeUp delay={220}>
               <p style={{
-                fontFamily: "var(--font-script)",
+                fontFamily: "'Cormorant Garamond',serif",
                 fontSize: "clamp(2.5rem, 8vw, 5rem)",
                 color: "white",
                 lineHeight: 1,

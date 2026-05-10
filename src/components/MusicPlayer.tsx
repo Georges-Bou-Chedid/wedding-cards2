@@ -23,6 +23,8 @@ declare global {
     onYouTubeIframeAPIReady?: () => void;
   }
   interface YTPlayer {
+    mute(): void;
+    unMute(): void;
     playVideo(): void;
     pauseVideo(): void;
     seekTo(sec: number, allowSeek?: boolean): void;
@@ -50,7 +52,9 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
   if (playerRef.current && readyRef.current) {
     // Mobile browsers need to see this call 
     // inside the 'onClick' event stack of the button that opens the invite.
+    playerRef.current.mute(); 
     playerRef.current.playVideo();
+    playerRef.current.unMute();
     playerRef.current.seekTo(START_SECONDS, true);
     setIsPlaying(true);
   } else {

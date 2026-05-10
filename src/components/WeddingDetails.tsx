@@ -429,9 +429,15 @@ const WeddingDetails = () => (
         src={giftBg} 
         fallbackColor="hsl(var(--dusty-blue-dark))" 
         overlay="rgba(28,38,50,0.3)" 
-        minH="95vh" 
+        minH="70vh" 
       >
-        <div /> {/* Empty div because the content follows below */}
+        <div style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          backgroundSize: 'contain', // Change 'cover' to 'contain' to see the whole photo
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center' 
+        }} />
       </FullBleed>
 
       {/* Info part - solid background directly under the photo */}

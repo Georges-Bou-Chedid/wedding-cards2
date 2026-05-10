@@ -52,10 +52,14 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
   if (playerRef.current && readyRef.current) {
     // Mobile browsers need to see this call 
     // inside the 'onClick' event stack of the button that opens the invite.
-    playerRef.current.mute(); 
+    playerRef.current.mute();
     playerRef.current.playVideo();
-    playerRef.current.unMute();
-    playerRef.current.seekTo(START_SECONDS, true);
+    
+    // 2. Short delay to ensure the stream is active before unmuting
+    setTimeout(() => {
+      playerRef.current?.unMute();
+      playerRef.current?.seekTo(START_SECONDS, true);
+    }, 100);
     setIsPlaying(true);
   } else {
     pendingPlayRef.current = true;
@@ -85,6 +89,7 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
           loop: 1,
           playlist: VIDEO_ID,
           playsinline: 1,
+          enablejsapi: 1,
         },
         events: {
           onReady: (e) => {
@@ -134,7 +139,15 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
     <>
       {/* Hidden YouTube player container */}
       <div ref={containerRef} 
-           style={{ position: 'absolute', width: 0, height: 0, opacity: 0, pointerEvents: 'none' }} 
+           style={{ 
+            position: 'fixed', 
+            top: -100, 
+            left: -100, 
+            width: 1, 
+            height: 1, 
+            opacity: 0, 
+            pointerEvents: 'none' 
+          }}
            aria-hidden="true" 
       />
 

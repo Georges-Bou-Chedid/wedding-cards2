@@ -452,7 +452,7 @@ const WeddingDetails = () => (
     <FullBleed src={footerBg} fallbackColor="hsl(212,30%,14%)" overlay="rgba(6,14,22,0.55)" minH="100vh">
       <div className="flex flex-col items-center justify-center min-h-screen text-center px-6 py-20">
         <motion.p
-          style={{ fontFamily: "var(--font-script)", fontSize: "0.58rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}
+          style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.58rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -472,7 +472,7 @@ const WeddingDetails = () => (
         </motion.p>
         <motion.p
           className="text-white/55 mt-5 tracking-[0.42em] uppercase"
-          style={{ fontFamily: "var(--font-script)", fontSize: "0.68rem" }}
+          style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.68rem" }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

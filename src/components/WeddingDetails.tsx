@@ -17,6 +17,7 @@ import CountdownTimer from "./CountdownTimer";
 import heroBg   from "@/assets/IMG_2745.webp";   // chapel exterior — _2745
 import dateBg   from "@/assets/IMG_2741.webp";   // date section
 import footerBg from "@/assets/IMG_2750.webp";   // footer
+import giftBg   from "@/assets/IMG_2742.webp";
 
 /* ─── Scroll-reveal ─────────────────────────────────────────────────────── */
 const useScrollReveal = (ref: React.RefObject<HTMLElement | null>) => {
@@ -118,23 +119,19 @@ const WeddingDetails = () => (
       <div className="flex flex-col items-center justify-center min-h-screen text-center px-6 py-24 max-w-2xl mx-auto">
         <FadeUp>
           <p
-            className="font-arabic text-white leading-[2.2]"
+            className="font-arabic2 text-white leading-[2.2]"
             dir="rtl" lang="ar"
-            style={{ fontSize: "clamp(1.1rem,3.5vw,1.7rem)", textShadow: "0 2px 12px rgba(0,0,0,0.45)" }}
+            style={{ fontSize: "clamp(1.2rem,3.6vw,1.8rem)", lineHeight: "2.4",
+              letterSpacing: "0.02em", textShadow: "0 2px 12px rgba(0,0,0,0.45)" }}
           >
-            أَمَّا نَحنُ فإِنَّنا نُحِبّ،<br />
+            أَمَّا نَحنُ فإِنَّنا نُحِبّ،
             لأَنَّه أَحَبَّنا قَبلَ أَن نُحِبَّه
           </p>
         </FadeUp>
         <FadeUp delay={150}>
-          <p className="font-arabic text-white/65 mt-3" dir="rtl" lang="ar" style={{ fontSize: "0.95rem" }}>
+          <p className="font-arabic2 text-white/65 mt-3" dir="rtl" lang="ar" style={{ fontSize: "0.95rem" }}>
             يوحنّا الأولى 4 : 19
           </p>
-        </FadeUp>
-        <FadeUp delay={320}>
-          <div className="mt-10 flex flex-col items-center gap-1 text-white/40">
-            <div className="w-px h-10 bg-white/25" />
-          </div>
         </FadeUp>
       </div>
     </FullBleed>
@@ -189,27 +186,34 @@ const WeddingDetails = () => (
 
         {/* Couple names — Amelia (Bodoni Moda) + Great Vibes */}
         <FadeUp delay={380}>
-          <div className="my-8">
+          <div className="my-8 flex items-center justify-center gap-4 flex-wrap">
             <p
               className="text-foreground leading-none"
               style={{
-                fontFamily: "var(--font-amelia)",
-                fontWeight: 300,
-                fontSize: "clamp(2.8rem,10vw,5.5rem)",
-                letterSpacing: "0.08em",
+                fontFamily: "var(--font-script)",
+                fontWeight: 400,
+                fontSize: "clamp(2.8rem, 8vw, 3rem)",
               }}
             >
-              Bob
+              Ibrahim
             </p>
             <p
               className="text-dusty-blue"
-              style={{ fontFamily: "'Great Vibes',cursive", fontSize: "clamp(2.2rem,7vw,3.8rem)" }}
+              style={{ 
+                fontFamily: "var(--font-script)", 
+                fontSize: "clamp(2rem, 6vw, 1.5rem)",
+                marginTop: "0.5rem" 
+              }}
             >
               &amp;
             </p>
             <p
               className="text-foreground leading-none"
-              style={{ fontFamily: "'Great Vibes',cursive", fontSize: "clamp(3rem,10vw,5.5rem)" }}
+              style={{ 
+                fontFamily: "var(--font-script)", 
+                fontWeight: 400,
+                fontSize: "clamp(2.8rem, 8vw, 3rem)" 
+              }}
             >
               Marianne
             </p>
@@ -229,71 +233,64 @@ const WeddingDetails = () => (
       overlay="rgba(10,18,28,0.62)"
       minH="100vh"
     >
-      <div className="flex flex-col items-center justify-center min-h-screen text-center px-6 py-20">
+      {/* Using flex-col and justify-between to push the countdown to the bottom */}
+      <div className="flex flex-col items-center justify-between min-h-screen text-center px-6 pt-32 pb-16">
+        
+        {/* Top Content: Date Section */}
+        <div className="flex flex-col items-center">
+          {/* Date Container — Flex Row */}
+          <div className="flex flex-row items-baseline justify-center gap-4 flex-wrap">
+            {/* Date — 12 */}
+            <FadeUp delay={80}>
+              <p style={{
+                fontFamily: "var(--font-amelia)",
+                fontWeight: 300,
+                fontSize: "clamp(4rem, 15vw, 10rem)",
+                lineHeight: 1,
+                letterSpacing: "-0.02em",
+                color: "white",
+                textShadow: "0 4px 40px rgba(0,0,0,0.5)",
+              }}>
+                12
+              </p>
+            </FadeUp>
 
-        {/* Thin rule */}
-        <FadeUp>
-          <div style={{ width: 1, height: 56, background: "rgba(255,255,255,0.22)", margin: "0 auto 2.5rem" }} />
-        </FadeUp>
+            {/* Month — July */}
+            <FadeUp delay={160}>
+              <p style={{
+                fontFamily: "var(--font-script)",
+                fontSize: "clamp(2.5rem, 8vw, 5rem)",
+                color: "white",
+                lineHeight: 1,
+                textShadow: "0 2px 20px rgba(0,0,0,0.35)",
+              }}>
+                July
+              </p>
+            </FadeUp>
 
-        {/* Date — large number */}
-        <FadeUp delay={80}>
-          <p style={{
-            fontFamily: "var(--font-amelia)",
-            fontWeight: 300,
-            fontSize: "clamp(6rem,24vw,14rem)",
-            lineHeight: 0.88,
-            letterSpacing: "-0.02em",
-            color: "white",
-            textShadow: "0 4px 40px rgba(0,0,0,0.5)",
-          }}>
-            12
-          </p>
-        </FadeUp>
+            {/* Year — 2026 */}
+            <FadeUp delay={220}>
+              <p style={{
+                fontFamily: "'Montserrat',sans-serif",
+                fontWeight: 300,
+                fontSize: "clamp(1rem, 3vw, 1.5rem)",
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.8)",
+              }}>
+                2026
+              </p>
+            </FadeUp>
+          </div>
+        </div>
 
-        {/* Month in Great Vibes */}
-        <FadeUp delay={160}>
-          <p style={{
-            fontFamily: "'Great Vibes',cursive",
-            fontSize: "clamp(3rem,10vw,6rem)",
-            color: "white",
-            lineHeight: 1,
-            marginTop: "-0.4rem",
-            textShadow: "0 2px 20px rgba(0,0,0,0.35)",
-          }}>
-            July
-          </p>
-        </FadeUp>
+        {/* Bottom Content: Countdown */}
+        <div className="w-full pb-10">
+          <FadeUp delay={340}>
+            <CountdownTimer targetDate="2026-07-12T18:00:00" variant="light" />
+          </FadeUp>
+        </div>
 
-        {/* Year */}
-        <FadeUp delay={220}>
-          <p style={{
-            fontFamily: "'Montserrat',sans-serif",
-            fontWeight: 300,
-            fontSize: "clamp(0.75rem,2vw,0.95rem)",
-            letterSpacing: "0.5em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.6)",
-            marginTop: "0.8rem",
-          }}>
-            2026
-          </p>
-        </FadeUp>
-
-        {/* Thin rule */}
-        <FadeUp delay={280}>
-          <div style={{ width: 1, height: 44, background: "rgba(255,255,255,0.22)", margin: "2rem auto" }} />
-        </FadeUp>
-
-        {/* Countdown */}
-        <FadeUp delay={340}>
-          <CountdownTimer targetDate="2026-07-12T18:00:00" variant="light" />
-        </FadeUp>
-
-        {/* Thin bottom rule */}
-        <FadeUp delay={400}>
-          <div style={{ width: 1, height: 56, background: "rgba(255,255,255,0.22)", margin: "2.5rem auto 0" }} />
-        </FadeUp>
       </div>
     </FullBleed>
 
@@ -313,9 +310,10 @@ const WeddingDetails = () => (
           </h2>
         </FadeUp>
 
-        <div className="flex flex-col sm:flex-row gap-14 sm:gap-8 justify-center items-start">
+        {/* Changed items-start to items-center to fix mobile centering */}
+        <div className="flex flex-col sm:flex-row gap-14 sm:gap-8 justify-center items-center sm:items-start">
           {/* Ceremony */}
-          <FadeUp delay={100} className="flex-1 text-center">
+          <FadeUp delay={100} className="w-full flex-1 text-center">
             <p
               className="text-dusty-blue tracking-[0.32em] uppercase mb-3"
               style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.58rem" }}
@@ -339,8 +337,8 @@ const WeddingDetails = () => (
           {/* Visual separator */}
           <div className="hidden sm:block self-stretch" style={{ width: 1, background: "hsl(var(--dusty-blue-pale))", minHeight: 120 }} />
 
-          {/* Dinner */}
-          <FadeUp delay={200} className="flex-1 text-center">
+          {/* Dinner Reception */}
+          <FadeUp delay={200} className="w-full flex-1 text-center">
             <p
               className="text-dusty-blue tracking-[0.32em] uppercase mb-3"
               style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.58rem" }}
@@ -374,18 +372,11 @@ const WeddingDetails = () => (
           >
             Celebrate With Us
           </p>
-          <h2
-            className="text-foreground mb-4"
-            style={{ fontFamily: "var(--font-amelia)", fontWeight: 300, fontSize: "clamp(2rem,6vw,3rem)", letterSpacing: "0.04em" }}
-          >
-            Before the Big Day
-          </h2>
           <p
             className="text-muted-foreground italic max-w-md mx-auto mb-10"
             style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "1.05rem", lineHeight: 1.85 }}
           >
-            We warmly invite you to join us as we celebrate this joyous occasion
-            together with family and loved ones.
+            Your presence would make our celebration more special as we gather with family and loved ones.
           </p>
         </FadeUp>
 
@@ -396,48 +387,57 @@ const WeddingDetails = () => (
 
         {/* Simple text links — no boxes, no icons, no family names */}
         <FadeUp delay={200}>
-          <div className="flex flex-wrap gap-8 justify-center mt-12">
-            <div className="text-center">
-              <p
-                className="text-dusty-blue tracking-[0.28em] uppercase mb-3"
-                style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.58rem" }}
-              >
-                Bride's Home
-              </p>
-              <MapBtn href="https://maps.app.goo.gl/7x4cVWXSSjAZTStX9?g_st=aw">
-                Get Directions
-              </MapBtn>
-            </div>
-            <div className="text-center">
-              <p
-                className="text-dusty-blue tracking-[0.28em] uppercase mb-3"
-                style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.58rem" }}
-              >
-                Groom's Home
-              </p>
-              <MapBtn href="https://www.google.com/maps?q=34.010582,35.654316">
-                Get Directions
-              </MapBtn>
-            </div>
+        <div className="flex flex-wrap gap-8 justify-center mt-12">
+          <div className="text-center">
+            <p
+              className="tracking-[0.28em] uppercase mb-3"
+              style={{ 
+                fontFamily: "'Montserrat',sans-serif", 
+                fontSize: "0.58rem",
+                color: "#1C2632" // This is the "Kehle" (Navy) color
+              }}
+            >
+              Bride's Home
+            </p>
+            <MapBtn href="https://maps.google.com/?q=Brides+Home+Location">
+              Get Directions
+            </MapBtn>
           </div>
-        </FadeUp>
+          <div className="text-center">
+            <p
+              className="tracking-[0.28em] uppercase mb-3"
+              style={{ 
+                fontFamily: "'Montserrat',sans-serif", 
+                fontSize: "0.58rem",
+                color: "#1C2632" // This is the "Kehle" (Navy) color
+              }}
+            >
+              Groom's Home
+            </p>
+            <MapBtn href="https://maps.google.com/?q=Grooms+Home+Location">
+              Get Directions
+            </MapBtn>
+          </div>
+        </div>
+      </FadeUp>
       </div>
     </section>
 
     {/* ── 6. WISH ACCOUNT ── */}
-    <section
-      className="relative py-20 px-6 text-center overflow-hidden"
-      style={{ background: "hsl(var(--dusty-blue))" }}
+    <FullBleed 
+      src={giftBg} 
+      fallbackColor="hsl(var(--dusty-blue-dark))" 
+      overlay="rgba(28,38,50,0.65)" 
+      minH="70vh"
     >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at 30% 50%,rgba(255,255,255,0.06) 0%,transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(255,255,255,0.04) 0%,transparent 60%)",
-        }}
-      />
-      <GiftRegistry />
-    </section>
+      <div className="relative py-24 px-6 text-center max-w-2xl mx-auto">
+        <FadeUp delay={150}>
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8 inline-block">
+            <GiftRegistry />
+          </div>
+        </FadeUp>
+      </div>
+    </FullBleed>
 
     {/* ── 7. RSVP ── */}
     <section style={{ background: "hsl(var(--ivory))" }}>
@@ -447,13 +447,6 @@ const WeddingDetails = () => (
     {/* ── 8. FOOTER ── */}
     <FullBleed src={footerBg} fallbackColor="hsl(212,30%,14%)" overlay="rgba(6,14,22,0.55)" minH="100vh">
       <div className="flex flex-col items-center justify-center min-h-screen text-center px-6 py-20">
-        <motion.div
-          style={{ width: 1, height: 64, background: "rgba(255,255,255,0.2)", margin: "0 auto 2rem" }}
-          initial={{ scaleY: 0 }}
-          whileInView={{ scaleY: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9 }}
-        />
         <motion.p
           style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.58rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "1.5rem" }}
           initial={{ opacity: 0 }}
@@ -465,13 +458,13 @@ const WeddingDetails = () => (
         </motion.p>
         <motion.p
           className="text-white"
-          style={{ fontFamily: "'Great Vibes',cursive", fontSize: "clamp(3.5rem,12vw,7rem)", lineHeight: 1.05 }}
+          style={{ fontFamily: "var(--font-script)", fontSize: "clamp(2.2rem,12vw,2.2rem)", lineHeight: 1.05 }}
           initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.1, delay: 0.3 }}
         >
-          Bob &amp; Marianne
+          Ibrahim &amp; Marianne
         </motion.p>
         <motion.p
           className="text-white/55 mt-5 tracking-[0.42em] uppercase"
@@ -483,13 +476,6 @@ const WeddingDetails = () => (
         >
           12 · 07 · 2026
         </motion.p>
-        <motion.div
-          style={{ width: 1, height: 64, background: "rgba(255,255,255,0.2)", margin: "2rem auto 0" }}
-          initial={{ scaleY: 0 }}
-          whileInView={{ scaleY: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, delay: 0.5 }}
-        />
       </div>
     </FullBleed>
   </div>

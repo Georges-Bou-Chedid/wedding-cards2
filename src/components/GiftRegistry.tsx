@@ -40,18 +40,6 @@ const GiftRegistry = () => {
       >
         Wedding Gift
       </p>
-      <h2
-        className="mb-3"
-        style={{
-          fontFamily: "'Cormorant Garamond',serif",
-          fontWeight: 300,
-          fontSize: "clamp(2rem,6vw,2.8rem)",
-          letterSpacing: "0.04em",
-          color: "white",
-        }}
-      >
-        Whish Account
-      </h2>
       <p
         className="leading-relaxed mb-8"
         style={{
@@ -61,8 +49,8 @@ const GiftRegistry = () => {
           color: "rgba(255,255,255,0.82)",
         }}
       >
-        Your presence is our greatest gift. For those who wish to honour us,
-        a wedding account is available through Whish Money.
+        The joy of sharing this day with you is the greatest gift we could receive.
+        For those wishing to celebrate us with a gift Wish money account is available.
       </p>
 
       {/* Account card */}
@@ -107,7 +95,7 @@ const GiftRegistry = () => {
               marginTop: "2px",
             }}
           >
-            BOB &amp; MARIANNE
+            Ibrahim &amp; MARIANNE
           </p>
         </div>
         <button

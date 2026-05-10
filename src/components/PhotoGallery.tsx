@@ -3,24 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ─── All couple photos ───────────────────────────────────────────────── */
-import p1 from "@/assets/IMG_2742.webp";
-import p2 from "@/assets/IMG_2747.webp";
-import p3 from "@/assets/IMG_2749.webp";
-import p4 from "@/assets/IMG_2751.webp";
-import p5 from "@/assets/IMG_2756.webp";
-import p6 from "@/assets/IMG_2757.webp";
-import p7 from "@/assets/IMG_2741.webp";
-import p8 from "@/assets/IMG_2745.webp";
+import p1 from "@/assets/IMG_2747.webp";
+import p2 from "@/assets/IMG_2749.webp";
+import p3 from "@/assets/IMG_2751.webp";
+import p4 from "@/assets/IMG_2756.webp";
+import p5 from "@/assets/IMG_2757.webp";
 
 const SLIDES = [
-  { src: p1, alt: "Bob & Marianne" },
-  { src: p2, alt: "Bob & Marianne" },
-  { src: p3, alt: "Bob & Marianne" },
-  { src: p4, alt: "Bob & Marianne" },
-  { src: p5, alt: "Bob & Marianne" },
-  { src: p6, alt: "Bob & Marianne" },
-  { src: p7, alt: "Bob & Marianne" },
-  { src: p8, alt: "Bob & Marianne" },
+  { src: p1, alt: "Ibrahim & Marianne" },
+  { src: p2, alt: "Ibrahim & Marianne" },
+  { src: p3, alt: "Ibrahim & Marianne" },
+  { src: p4, alt: "Ibrahim & Marianne" },
+  { src: p5, alt: "Ibrahim & Marianne" },
 ];
 
 const PhotoGallery = () => {

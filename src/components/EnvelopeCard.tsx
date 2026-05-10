@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface EnvelopeCardProps {
   onOpen: () => void;
+  onInteraction: () => void;
 }
 
 /* ─── Full-screen botanical SVG — white lines on dusty blue ───────────── */
@@ -181,11 +182,12 @@ const DiagonalThread = () => (
 );
 
 /* ─── Main component ──────────────────────────────────────────────────── */
-const EnvelopeCard = ({ onOpen }: EnvelopeCardProps) => {
+const EnvelopeCard = ({ onOpen, onInteraction }: EnvelopeCardProps) => {
   const [isOpening, setIsOpening] = useState(false);
 
   const handleClick = () => {
     if (isOpening) return;
+    onInteraction();
     setIsOpening(true);
     setTimeout(onOpen, 2400);
   };

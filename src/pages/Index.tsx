@@ -8,20 +8,19 @@ const Index = () => {
   const [isOpen, setIsOpen] = useState(false);
   const musicStartRef = useRef<(() => void) | null>(null);
 
+  const handleInteraction = () => {
+    musicStartRef.current?.();
+  };
+
   const handleOpen = () => {
-    if (musicStartRef.current) {
-      musicStartRef.current();
-    }
     setIsOpen(true);
-    /* Start YouTube music after user interaction (envelope click) */
-    // setTimeout(() => musicStartRef.current?.(), 200);
   };
 
   return (
     <>
       <MusicPlayer startRef={musicStartRef} />
       <AnimatePresence>
-        {!isOpen && <EnvelopeCard onOpen={handleOpen} />}
+        {!isOpen && <EnvelopeCard onOpen={handleOpen} onInteraction={handleInteraction}/>}
       </AnimatePresence>
       {isOpen && (
         <motion.div

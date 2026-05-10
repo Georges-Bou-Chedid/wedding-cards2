@@ -64,16 +64,20 @@ const PhotoGallery = () => {
 
   return (
     <motion.div
-      className="w-full"
+      /* Added my-12 (vertical margin) to create space at top and bottom of the gallery */
+      className="w-full my-12"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
     >
-      {/* Slide container — large */}
+      {/* Slide container */}
       <div
         className="relative overflow-hidden rounded-sm shadow-xl"
-        style={{ height: "min(82vw, 640px)" }}
+        /* Increased height from min(82vw, 640px) to min(120vw, 800px) 
+           This makes the image much taller, especially on mobile.
+        */
+        style={{ height: "min(120vw, 800px)" }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >

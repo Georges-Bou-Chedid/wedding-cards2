@@ -15,18 +15,18 @@ const GiftRegistry = () => {
 
   return (
     <motion.div
-      className="text-center py-20 px-6 max-w-lg mx-auto"
+      className="text-center max-w-lg mx-auto" // Removed py-20 to control spacing from parent
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
     >
       {/* Gift icon */}
-      <div className="flex justify-center mb-5">
+      <div className="flex justify-center mb-6">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
             d="M20 12v10H4V12M22 7H2v5h20V7zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"
-            stroke="white"
+            stroke="#1C2632" /* Kehle color */
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -35,41 +35,42 @@ const GiftRegistry = () => {
       </div>
 
       <p
-        className="tracking-[0.3em] uppercase mb-2"
-        style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.62rem", color: "rgba(255,255,255,0.7)" }}
+        className="tracking-[0.3em] uppercase mb-3"
+        style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.65rem", color: "hsl(var(--dusty-blue-dark))" }}
       >
         Wedding Gift
       </p>
+      
       <p
-        className="leading-relaxed mb-8"
+        className="leading-relaxed mb-10"
         style={{
           fontFamily: "'Cormorant Garamond',serif",
           fontStyle: "italic",
-          fontSize: "1.05rem",
-          color: "rgba(255,255,255,0.82)",
+          fontSize: "1.2rem",
+          color: "#1C2632", /* Kehle color */
         }}
       >
         The joy of sharing this day with you is the greatest gift we could receive.
-        For those wishing to celebrate us with a gift Wish money account is available.
+        <br />
+        For those wishing to celebrate us with a gift, a Whish money account is available.
       </p>
 
-      {/* Account card */}
+      {/* Account card - Adjusted for light background */}
       <div
-        className="inline-flex items-center gap-5 rounded-sm px-7 py-5"
+        className="inline-flex items-center gap-6 rounded-sm px-8 py-6 shadow-sm"
         style={{
-          background: "rgba(255,255,255,0.14)",
-          border: "1px solid rgba(255,255,255,0.35)",
-          backdropFilter: "blur(8px)",
+          background: "white",
+          border: "1px solid hsl(var(--dusty-blue-pale))",
         }}
       >
         <div className="text-left">
           <p
             style={{
               fontFamily: "'Montserrat',sans-serif",
-              fontSize: "0.58rem",
-              letterSpacing: "0.28em",
+              fontSize: "0.6rem",
+              letterSpacing: "0.25em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.6)",
+              color: "hsl(var(--dusty-blue))",
               marginBottom: "4px",
             }}
           >
@@ -78,10 +79,10 @@ const GiftRegistry = () => {
           <p
             style={{
               fontFamily: "'Cormorant Garamond',serif",
-              fontSize: "1.8rem",
-              letterSpacing: "0.1em",
-              color: "white",
-              fontWeight: 400,
+              fontSize: "1.9rem",
+              letterSpacing: "0.05em",
+              color: "#1C2632",
+              fontWeight: 500,
             }}
           >
             {WHISH_ACCOUNT}
@@ -89,44 +90,41 @@ const GiftRegistry = () => {
           <p
             style={{
               fontFamily: "'Montserrat',sans-serif",
-              fontSize: "0.55rem",
-              letterSpacing: "0.22em",
-              color: "rgba(255,255,255,0.55)",
-              marginTop: "2px",
+              fontSize: "0.6rem",
+              letterSpacing: "0.15em",
+              color: "hsl(var(--dusty-blue-dark))",
+              marginTop: "4px",
             }}
           >
-            Ibrahim &amp; MARIANNE
+            IBRAHIM &amp; MARIANNE
           </p>
         </div>
+        
         <button
           onClick={copyAccount}
-          className="transition-colors p-1.5 rounded-sm"
-          style={{ color: "rgba(255,255,255,0.75)" }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "white"; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.75)"; }}
+          className="transition-all p-2 rounded-full hover:bg-slate-50"
+          style={{ color: "#1C2632" }}
           title="Copy account number"
-          aria-label="Copy Whish account number"
         >
           {copied ? (
-            <Check className="w-5 h-5" style={{ color: "hsl(142,60%,70%)" }} />
+            <Check className="w-6 h-6" style={{ color: "green" }} />
           ) : (
-            <Copy className="w-5 h-5" />
+            <Copy className="w-6 h-6 opacity-60 hover:opacity-100" />
           )}
         </button>
       </div>
 
       {copied && (
         <motion.p
-          className="mt-3"
+          className="mt-4"
           style={{
             fontFamily: "'Montserrat',sans-serif",
-            fontSize: "0.62rem",
-            letterSpacing: "0.15em",
-            color: "hsl(142,60%,72%)",
+            fontSize: "0.65rem",
+            color: "green",
+            letterSpacing: "0.1em"
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
         >
           Copied to clipboard ✓
         </motion.p>

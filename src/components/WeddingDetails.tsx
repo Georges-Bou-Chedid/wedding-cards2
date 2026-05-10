@@ -243,15 +243,13 @@ const WeddingDetails = () => (
             {/* Date — 12 */}
             <FadeUp delay={80}>
               <p style={{
-                fontFamily: "var(--font-amelia)",
-                fontWeight: 300,
-                fontSize: "clamp(4rem, 15vw, 10rem)",
-                lineHeight: 1,
-                letterSpacing: "-0.02em",
+                fontFamily: "var(--font-script)",
+                fontSize: "clamp(2.5rem, 8vw, 5rem)",
                 color: "white",
-                textShadow: "0 4px 40px rgba(0,0,0,0.5)",
+                lineHeight: 1,
+                textShadow: "0 2px 20px rgba(0,0,0,0.35)",
               }}>
-                12
+                12 .
               </p>
             </FadeUp>
 
@@ -264,21 +262,20 @@ const WeddingDetails = () => (
                 lineHeight: 1,
                 textShadow: "0 2px 20px rgba(0,0,0,0.35)",
               }}>
-                July
+                07 .
               </p>
             </FadeUp>
 
             {/* Year — 2026 */}
             <FadeUp delay={220}>
               <p style={{
-                fontFamily: "'Montserrat',sans-serif",
-                fontWeight: 300,
-                fontSize: "clamp(1rem, 3vw, 1.5rem)",
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                color: "rgba(255,255,255,0.8)",
+                fontFamily: "var(--font-script)",
+                fontSize: "clamp(2.5rem, 8vw, 5rem)",
+                color: "white",
+                lineHeight: 1,
+                textShadow: "0 2px 20px rgba(0,0,0,0.35)",
               }}>
-                2026
+                26
               </p>
             </FadeUp>
           </div>
@@ -387,14 +384,15 @@ const WeddingDetails = () => (
 
         {/* Simple text links — no boxes, no icons, no family names */}
         <FadeUp delay={200}>
-        <div className="flex flex-wrap gap-8 justify-center mt-12">
-          <div className="text-center">
+        {/* Changed flex-wrap to flex-nowrap to keep them on one line */}
+        <div className="flex flex-nowrap gap-4 sm:gap-8 justify-center mt-12 w-full px-2">
+          <div className="text-center flex-1 min-w-0">
             <p
-              className="tracking-[0.28em] uppercase mb-3"
+              className="tracking-[0.2rem] sm:tracking-[0.28em] uppercase mb-3 whitespace-nowrap"
               style={{ 
                 fontFamily: "'Montserrat',sans-serif", 
-                fontSize: "0.58rem",
-                color: "#1C2632" // This is the "Kehle" (Navy) color
+                fontSize: "clamp(0.5rem, 2.5vw, 0.58rem)", // Responsive font size
+                color: "#1C2632" 
               }}
             >
               Bride's Home
@@ -403,13 +401,14 @@ const WeddingDetails = () => (
               Get Directions
             </MapBtn>
           </div>
-          <div className="text-center">
+
+          <div className="text-center flex-1 min-w-0">
             <p
-              className="tracking-[0.28em] uppercase mb-3"
+              className="tracking-[0.2rem] sm:tracking-[0.28em] uppercase mb-3 whitespace-nowrap"
               style={{ 
                 fontFamily: "'Montserrat',sans-serif", 
-                fontSize: "0.58rem",
-                color: "#1C2632" // This is the "Kehle" (Navy) color
+                fontSize: "clamp(0.5rem, 2.5vw, 0.58rem)", // Responsive font size
+                color: "#1C2632" 
               }}
             >
               Groom's Home
@@ -424,20 +423,25 @@ const WeddingDetails = () => (
     </section>
 
     {/* ── 6. WISH ACCOUNT ── */}
-    <FullBleed 
-      src={giftBg} 
-      fallbackColor="hsl(var(--dusty-blue-dark))" 
-      overlay="rgba(28,38,50,0.65)" 
-      minH="70vh"
-    >
-      <div className="relative py-24 px-6 text-center max-w-2xl mx-auto">
-        <FadeUp delay={150}>
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8 inline-block">
-            <GiftRegistry />
-          </div>
-        </FadeUp>
-      </div>
-    </FullBleed>
+    <div className="w-full">
+      {/* Photo part - reduced height to focus on the image */}
+      <FullBleed 
+        src={giftBg} 
+        fallbackColor="hsl(var(--dusty-blue-dark))" 
+        overlay="rgba(28,38,50,0.3)" 
+        minH="45vh" 
+      >
+        <div /> {/* Empty div because the content follows below */}
+      </FullBleed>
+
+      {/* Info part - solid background directly under the photo */}
+      <section 
+        className="py-16 px-6 text-center" 
+        style={{ background: "hsl(var(--ivory))" }}
+      >
+        <GiftRegistry />
+      </section>
+    </div>
 
     {/* ── 7. RSVP ── */}
     <section style={{ background: "hsl(var(--ivory))" }}>
@@ -468,7 +472,7 @@ const WeddingDetails = () => (
         </motion.p>
         <motion.p
           className="text-white/55 mt-5 tracking-[0.42em] uppercase"
-          style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.68rem" }}
+          style={{ fontFamily: "var(--font-script)", fontSize: "0.68rem" }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

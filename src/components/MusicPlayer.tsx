@@ -47,14 +47,16 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
   const pendingPlayRef = useRef(false);
 
   const startPlay = useCallback(() => {
-    if (playerRef.current && readyRef.current) {
-      playerRef.current.seekTo(START_SECONDS, true);
-      playerRef.current.playVideo();
-      setIsPlaying(true);
-    } else {
-      pendingPlayRef.current = true;
-    }
-  }, []);
+  if (playerRef.current && readyRef.current) {
+    // Mobile browsers need to see this call 
+    // inside the 'onClick' event stack of the button that opens the invite.
+    playerRef.current.playVideo();
+    playerRef.current.seekTo(START_SECONDS, true);
+    setIsPlaying(true);
+  } else {
+    pendingPlayRef.current = true;
+  }
+}, []);
 
   /* Expose startPlay via ref so Index.tsx can call it */
   useEffect(() => {
@@ -126,7 +128,10 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
   return (
     <>
       {/* Hidden YouTube player container */}
-      <div ref={containerRef} className="hidden" aria-hidden="true" />
+      <div ref={containerRef} 
+           style={{ position: 'absolute', width: 0, height: 0, opacity: 0, pointerEvents: 'none' }} 
+           aria-hidden="true" 
+      />
 
       {/* Floating music toggle */}
       <motion.button

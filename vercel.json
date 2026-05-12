@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/Ibrahim-and-Marianne",
+      "destination": "/"
+    }
+  ]
+}

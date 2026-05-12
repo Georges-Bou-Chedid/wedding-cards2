@@ -1,8 +1,6 @@
 {
   "rewrites": [
-    {
-      "source": "/Ibrahim-and-Marianne",
-      "destination": "/"
-    }
+    { "handle": "filesystem" },
+    { "source": "/(.*)", "destination": "/" }
   ]
 }

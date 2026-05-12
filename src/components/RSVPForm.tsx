@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQAbNE2tHkQXnON3xIasH3TDnbBrSDMHCx8HhUumgBRRFe5rN3Ilvzh8xAgcOlPd9Jsg/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz5JtiSLlCth_McxFSoy7FLPxY4VIDoHpMFJKix_wADo9ugx4PnTXE_ws-iWv8Xu1Isbw/exec";
 
 const RSVPForm = () => {
   const [invitedNames, setInvitedNames] = useState<string[]>([]);
@@ -31,22 +31,22 @@ const RSVPForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!attendance) return;
+    if (!attendance || selectedAttendees.length === 0) return;
     setStatus("submitting");
 
     // Format data for Google Sheets
     const payload = new URLSearchParams({
-      name: invitedNames.join(", "), // The group name
-      attendees: attendance === "yes" ? selectedAttendees.join(", ") : "None",
+      name: invitedNames.join(", "), // Who the link was sent to
+      attendees: selectedAttendees.join(", "), // Who this specific response is for
       attendance: attendance === "yes" ? "Attending" : "Declined",
       message: message,
-      date: new Date().toLocaleString(),
+      date: new Date().toLocaleString("en-GB"), // Clean date format
     });
 
     try {
       await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors", // Required for Google Scripts
+        mode: "no-cors", 
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: payload.toString(),
       });
@@ -92,7 +92,7 @@ const RSVPForm = () => {
             <label className="block text-muted-foreground tracking-widest uppercase mb-4 text-[0.6rem] font-montserrat">
               Guests
             </label>
-            <div className="flex flex-wrap gap-2">
+           <div className="flex flex-wrap gap-2">
               {invitedNames.map((name) => (
                 <button
                   key={name}
@@ -101,15 +101,17 @@ const RSVPForm = () => {
                   className={`px-4 py-2 border rounded-full transition-all text-xs font-montserrat tracking-tight ${
                     selectedAttendees.includes(name) 
                     ? "bg-foreground text-white border-foreground" 
-                    : "border-dusty-blue-pale text-muted-foreground opacity-50"
+                    : "border-dusty-blue-pale text-muted-foreground opacity-40"
                   }`}
                 >
-                  {name} {selectedAttendees.includes(name) ? "✓" : ""}
+                  {name}
                 </button>
               ))}
             </div>
-            <p className="mt-2 text-[0.55rem] text-muted-foreground italic">
-              * Tap a name to remove it if they cannot attend.
+            <p className="mt-3 text-[0.6rem] text-muted-foreground italic leading-relaxed">
+              {attendance === "no" 
+                ? "* Select the names of those who are declining." 
+                : "* Select the names of those who will be attending."}
             </p>
           </div>
 

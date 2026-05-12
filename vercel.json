@@ -1,6 +1,14 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
-    { "handle": "filesystem" },
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/Ibrahim-and-Marianne",
+      "destination": "/"
+    },
+    {
+      "source": "/((?!api|static|.*\\..*).*)",
+      "destination": "/"
+    }
   ]
 }

@@ -21,7 +21,7 @@ const EnvelopeCard = ({ onOpen, onInteraction }: EnvelopeCardProps) => {
     if (isOpening) return;
     onInteraction();
     setIsOpening(true);
-    setTimeout(onOpen, 2350);
+    setTimeout(onOpen, 700);
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {

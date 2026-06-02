@@ -397,7 +397,7 @@ const WeddingDetails = () => (
             >
               Bride's Home
             </p>
-            <MapBtn href="https://maps.google.com/?q=Brides+Home+Location">
+            <MapBtn href="https://maps.app.goo.gl/Gwi44WYGacXGHQsDA">
               Get Directions
             </MapBtn>
           </div>
@@ -413,7 +413,7 @@ const WeddingDetails = () => (
             >
               Groom's Home
             </p>
-            <MapBtn href="https://maps.google.com/?q=Grooms+Home+Location">
+            <MapBtn href="https://maps.app.goo.gl/GdmJxyPFnDxENGs29">
               Get Directions
             </MapBtn>
           </div>

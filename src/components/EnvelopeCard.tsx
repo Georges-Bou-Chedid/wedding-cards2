@@ -78,6 +78,20 @@ const EnvelopeCard = ({ onOpen, onInteraction }: EnvelopeCardProps) => {
         animate={isOpening ? { opacity: 0.55 } : { opacity: 1 }}
         transition={{ duration: 0.9 }}
       />
+
+      <motion.div
+        className="pointer-events-none absolute inset-x-0 bottom-10 z-40 flex justify-center px-6 sm:bottom-12"
+        initial={{ opacity: 0, y: 16 }}
+        animate={isOpening ? { opacity: 0, y: 22, scale: 0.96 } : { opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="rounded-full border border-white/70 bg-ivory/95 px-7 py-3 text-center text-navy shadow-[0_18px_45px_rgba(13,24,34,0.28)] backdrop-blur-sm">
+          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-dusty-blue-dark">
+            Tap to open
+          </p>
+          <p className="mt-1 text-sm font-serif italic tracking-wide">the invitation</p>
+        </div>
+      </motion.div>
     </motion.div>
   );
 };

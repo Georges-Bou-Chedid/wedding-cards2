@@ -20,33 +20,50 @@ const paperTexture = {
   ].join(", "),
 };
 
-const branchLeaves = [
-  { cx: 73, cy: 155, rx: 3.8, ry: 10.5, rotate: -52 },
-  { cx: 63, cy: 143, rx: 3.5, ry: 9.5, rotate: -42 },
-  { cx: 56, cy: 128, rx: 3.2, ry: 8.8, rotate: -30 },
-  { cx: 52, cy: 112, rx: 3, ry: 8.2, rotate: -18 },
-  { cx: 52, cy: 96, rx: 2.8, ry: 7.6, rotate: -6 },
-  { cx: 55, cy: 80, rx: 2.6, ry: 7, rotate: 9 },
-  { cx: 62, cy: 65, rx: 2.4, ry: 6.4, rotate: 22 },
-  { cx: 72, cy: 52, rx: 2.2, ry: 5.8, rotate: 36 },
+const wreathLeaves = [
+  { cx: 80, cy: 160, rx: 2.4, ry: 7.2, rotate: -56 },
+  { cx: 69, cy: 151, rx: 2.2, ry: 6.8, rotate: -48 },
+  { cx: 61, cy: 139, rx: 2.1, ry: 6.4, rotate: -39 },
+  { cx: 56, cy: 126, rx: 2, ry: 6, rotate: -29 },
+  { cx: 53, cy: 112, rx: 1.9, ry: 5.7, rotate: -17 },
+  { cx: 53, cy: 98, rx: 1.8, ry: 5.4, rotate: -4 },
+  { cx: 56, cy: 84, rx: 1.7, ry: 5.1, rotate: 10 },
+  { cx: 62, cy: 71, rx: 1.65, ry: 4.8, rotate: 23 },
+  { cx: 71, cy: 59, rx: 1.55, ry: 4.5, rotate: 36 },
+  { cx: 82, cy: 49, rx: 1.45, ry: 4.1, rotate: 49 },
+  { cx: 89, cy: 39, rx: 1.3, ry: 3.6, rotate: 64 },
 ];
 
-const sideSprigs = [
-  "M69 150C55 153 46 160 39 170",
-  "M58 131C44 131 34 137 27 148",
-  "M53 108C39 104 29 107 20 116",
-  "M58 84C47 76 37 73 27 77",
-  "M71 60C65 49 57 43 46 39",
+const innerLeaves = [
+  { cx: 87, cy: 151, rx: 1.7, ry: 5.4, rotate: 36 },
+  { cx: 75, cy: 137, rx: 1.6, ry: 5, rotate: 27 },
+  { cx: 68, cy: 121, rx: 1.5, ry: 4.7, rotate: 14 },
+  { cx: 66, cy: 105, rx: 1.45, ry: 4.3, rotate: 0 },
+  { cx: 69, cy: 89, rx: 1.35, ry: 4, rotate: -14 },
+  { cx: 75, cy: 74, rx: 1.3, ry: 3.7, rotate: -28 },
+  { cx: 84, cy: 61, rx: 1.2, ry: 3.4, rotate: -41 },
 ];
 
-const flowerDots = [
-  { cx: 38, cy: 170, r: 2.1 },
-  { cx: 31, cy: 145, r: 1.8 },
-  { cx: 22, cy: 116, r: 2 },
-  { cx: 31, cy: 77, r: 1.9 },
-  { cx: 47, cy: 39, r: 1.7 },
-  { cx: 81, cy: 167, r: 1.6 },
-  { cx: 66, cy: 70, r: 1.4 },
+const budSprigs = [
+  "M75 157C66 164 58 168 48 170",
+  "M64 145C53 150 45 157 38 166",
+  "M56 130C44 130 35 136 29 146",
+  "M53 111C41 108 32 111 23 119",
+  "M57 89C47 82 38 79 28 82",
+  "M67 67C61 57 53 51 43 48",
+];
+
+const budDots = [
+  { cx: 48, cy: 170, r: 1.65 },
+  { cx: 42, cy: 166, r: 1.25 },
+  { cx: 38, cy: 166, r: 1.45 },
+  { cx: 31, cy: 146, r: 1.55 },
+  { cx: 26, cy: 119, r: 1.65 },
+  { cx: 32, cy: 82, r: 1.55 },
+  { cx: 45, cy: 49, r: 1.35 },
+  { cx: 73, cy: 166, r: 1.15 },
+  { cx: 57, cy: 153, r: 1.1 },
+  { cx: 52, cy: 72, r: 1.05 },
 ];
 
 const EmbossedMonogram = () => (
@@ -58,8 +75,8 @@ const EmbossedMonogram = () => (
   >
     <defs>
       <filter id="pressed-paper-shadow" x="-25%" y="-25%" width="150%" height="150%">
-        <feDropShadow dx="-1.4" dy="-1.4" stdDeviation="0.65" floodColor="#a9b5be" floodOpacity="0.5" />
-        <feDropShadow dx="1.7" dy="1.9" stdDeviation="0.8" floodColor="#52616c" floodOpacity="0.52" />
+        <feDropShadow dx="-1.1" dy="-1.1" stdDeviation="0.5" floodColor="#a9b5be" floodOpacity="0.48" />
+        <feDropShadow dx="1.25" dy="1.45" stdDeviation="0.62" floodColor="#52616c" floodOpacity="0.5" />
       </filter>
       <filter id="raised-paper-highlight" x="-25%" y="-25%" width="150%" height="150%">
         <feDropShadow dx="-1.2" dy="-1.2" stdDeviation="0.5" floodColor="#b3bec7" floodOpacity="0.78" />
@@ -72,32 +89,43 @@ const EmbossedMonogram = () => (
       </linearGradient>
     </defs>
 
-    <g filter="url(#pressed-paper-shadow)" opacity="0.86">
+    <g filter="url(#pressed-paper-shadow)" opacity="0.9">
       <path
-        d="M92 168C61 154 45 123 51 90C55 65 69 47 91 36"
+        d="M88 168C62 158 50 130 54 101C58 72 72 47 96 34"
         fill="none"
         stroke="url(#pressed-paper-fill)"
-        strokeWidth="3"
+        strokeWidth="2.05"
         strokeLinecap="round"
       />
       <path
-        d="M148 168C179 154 195 123 189 90C185 65 171 47 149 36"
+        d="M152 168C178 158 190 130 186 101C182 72 168 47 144 34"
         fill="none"
         stroke="url(#pressed-paper-fill)"
-        strokeWidth="3"
+        strokeWidth="2.05"
         strokeLinecap="round"
       />
       <path
-        d="M74 160C88 178 106 185 120 185C134 185 152 178 166 160"
+        d="M78 160C91 177 106 184 120 184C134 184 149 177 162 160"
         fill="none"
         stroke="url(#pressed-paper-fill)"
-        strokeWidth="2.4"
+        strokeWidth="1.7"
         strokeLinecap="round"
       />
 
-      {branchLeaves.map((leaf, index) => (
+      {wreathLeaves.map((leaf, index) => (
         <ellipse
-          key={"left-leaf-" + index}
+          key={"left-outer-leaf-" + index}
+          cx={leaf.cx}
+          cy={leaf.cy}
+          rx={leaf.rx}
+          ry={leaf.ry}
+          fill="#7d8b97"
+          transform={"rotate(" + leaf.rotate + " " + leaf.cx + " " + leaf.cy + ")"}
+        />
+      ))}
+      {innerLeaves.map((leaf, index) => (
+        <ellipse
+          key={"left-inner-leaf-" + index}
           cx={leaf.cx}
           cy={leaf.cy}
           rx={leaf.rx}
@@ -107,9 +135,20 @@ const EmbossedMonogram = () => (
         />
       ))}
       <g transform="translate(240 0) scale(-1 1)">
-        {branchLeaves.map((leaf, index) => (
+        {wreathLeaves.map((leaf, index) => (
           <ellipse
-            key={"right-leaf-" + index}
+            key={"right-outer-leaf-" + index}
+            cx={leaf.cx}
+            cy={leaf.cy}
+            rx={leaf.rx}
+            ry={leaf.ry}
+            fill="#7d8b97"
+            transform={"rotate(" + leaf.rotate + " " + leaf.cx + " " + leaf.cy + ")"}
+          />
+        ))}
+        {innerLeaves.map((leaf, index) => (
+          <ellipse
+            key={"right-inner-leaf-" + index}
             cx={leaf.cx}
             cy={leaf.cy}
             rx={leaf.rx}
@@ -120,35 +159,35 @@ const EmbossedMonogram = () => (
         ))}
       </g>
 
-      {sideSprigs.map((d, index) => (
+      {budSprigs.map((d, index) => (
         <path
-          key={"left-sprig-" + index}
+          key={"left-bud-sprig-" + index}
           d={d}
           fill="none"
           stroke="#7d8b97"
-          strokeWidth="1.7"
+          strokeWidth="1.15"
           strokeLinecap="round"
         />
       ))}
       <g transform="translate(240 0) scale(-1 1)">
-        {sideSprigs.map((d, index) => (
+        {budSprigs.map((d, index) => (
           <path
-            key={"right-sprig-" + index}
+            key={"right-bud-sprig-" + index}
             d={d}
             fill="none"
             stroke="#7d8b97"
-            strokeWidth="1.7"
+            strokeWidth="1.15"
             strokeLinecap="round"
           />
         ))}
       </g>
 
-      {flowerDots.map((dot, index) => (
-        <circle key={"left-dot-" + index} cx={dot.cx} cy={dot.cy} r={dot.r} fill="#7f8d99" />
+      {budDots.map((dot, index) => (
+        <circle key={"left-bud-" + index} cx={dot.cx} cy={dot.cy} r={dot.r} fill="#7f8d99" />
       ))}
       <g transform="translate(240 0) scale(-1 1)">
-        {flowerDots.map((dot, index) => (
-          <circle key={"right-dot-" + index} cx={dot.cx} cy={dot.cy} r={dot.r} fill="#7f8d99" />
+        {budDots.map((dot, index) => (
+          <circle key={"right-bud-" + index} cx={dot.cx} cy={dot.cy} r={dot.r} fill="#7f8d99" />
         ))}
       </g>
     </g>
@@ -173,9 +212,9 @@ const EmbossedMonogram = () => (
         d="M103 128C112 135 130 134 139 124"
         fill="none"
         stroke="#778692"
-        strokeWidth="1.4"
+        strokeWidth="1.15"
         strokeLinecap="round"
-        opacity="0.75"
+        opacity="0.68"
       />
     </g>
   </svg>

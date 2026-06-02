@@ -1,6 +1,6 @@
 import { useState, type KeyboardEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import envelopePhoto from "@/assets/envelope-texture.jpg";
+import envelopePhoto from "@/assets/Untitled-2.png";
 
 interface EnvelopeCardProps {
   onOpen: () => void;

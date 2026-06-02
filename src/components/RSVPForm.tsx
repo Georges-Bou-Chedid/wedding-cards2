@@ -72,7 +72,7 @@ const RSVPForm = () => {
         RSVP
       </h2>
       <p className="text-muted-foreground italic mb-8 font-serif">
-        Kindly respond before 1st July 2026
+        Kindly respond before June 12th, 2026.
       </p>
 
       {status === "success" ? (

@@ -16,6 +16,8 @@ const imageLayerStyle = {
 
 const flapClipPath = "polygon(0 0, 100% 0, 100% 44%, 50% 70%, 0 44%)";
 
+const innerPocketClipPath = "polygon(0 44%, 50% 70%, 100% 44%, 100% 100%, 0 100%)";
+
 const flapOpenAnimation = { rotateX: -72, y: -70, scale: 1.02 };
 
 const EnvelopeCard = ({ onOpen, onInteraction }: EnvelopeCardProps) => {
@@ -55,6 +57,17 @@ const EnvelopeCard = ({ onOpen, onInteraction }: EnvelopeCardProps) => {
       />
 
       <motion.div
+        className="pointer-events-none absolute inset-0 z-[5]"
+        style={{
+          clipPath: innerPocketClipPath,
+          background: "#ffffff",
+        }}
+        initial={false}
+        animate={isOpening ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.28, delay: isOpening ? 0.12 : 0 }}
+      />
+
+      <motion.div
         className="absolute inset-0 z-10"
         style={{
           ...imageLayerStyle,
@@ -71,25 +84,6 @@ const EnvelopeCard = ({ onOpen, onInteraction }: EnvelopeCardProps) => {
             : { rotateX: 0, y: 0, scale: 1, opacity: 1, filter: "brightness(1)" }
         }
         transition={{ duration: 1.15, ease: [0.2, 0.75, 0.25, 1] }}
-      />
-
-      <motion.div
-        className="pointer-events-none absolute inset-0 z-40"
-        style={{
-          clipPath: flapClipPath,
-          transformOrigin: "50% 42%",
-          transformStyle: "preserve-3d",
-          backfaceVisibility: "hidden",
-          background: "#ffffff",
-          boxShadow: "0 22px 52px rgba(24,35,45,0.2)",
-        }}
-        initial={false}
-        animate={isOpening ? { ...flapOpenAnimation, opacity: 1 } : { rotateX: 0, y: 0, scale: 1, opacity: 0 }}
-        transition={{
-          duration: 1.15,
-          ease: [0.2, 0.75, 0.25, 1],
-          opacity: { duration: 0.28, delay: isOpening ? 0.12 : 0 },
-        }}
       />
 
       <motion.div

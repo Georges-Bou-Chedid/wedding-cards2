@@ -14,6 +14,10 @@ const imageLayerStyle = {
   backgroundSize: "cover",
 };
 
+const flapClipPath = "polygon(0 0, 100% 0, 100% 44%, 50% 70%, 0 44%)";
+
+const flapOpenAnimation = { rotateX: -72, y: -70, scale: 1.02 };
+
 const EnvelopeCard = ({ onOpen, onInteraction }: EnvelopeCardProps) => {
   const [isOpening, setIsOpening] = useState(false);
 
@@ -54,7 +58,7 @@ const EnvelopeCard = ({ onOpen, onInteraction }: EnvelopeCardProps) => {
         className="absolute inset-0 z-10"
         style={{
           ...imageLayerStyle,
-          clipPath: "polygon(0 0, 100% 0, 100% 44%, 50% 70%, 0 44%)",
+          clipPath: flapClipPath,
           transformOrigin: "50% 42%",
           transformStyle: "preserve-3d",
           backfaceVisibility: "hidden",
@@ -63,10 +67,29 @@ const EnvelopeCard = ({ onOpen, onInteraction }: EnvelopeCardProps) => {
         initial={false}
         animate={
           isOpening
-            ? { rotateX: -72, y: -70, scale: 1.02, opacity: 0.82, filter: "brightness(1.1)" }
+            ? { ...flapOpenAnimation, opacity: 0.82, filter: "brightness(1.1)" }
             : { rotateX: 0, y: 0, scale: 1, opacity: 1, filter: "brightness(1)" }
         }
         transition={{ duration: 1.15, ease: [0.2, 0.75, 0.25, 1] }}
+      />
+
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-40"
+        style={{
+          clipPath: flapClipPath,
+          transformOrigin: "50% 42%",
+          transformStyle: "preserve-3d",
+          backfaceVisibility: "hidden",
+          background: "#ffffff",
+          boxShadow: "0 22px 52px rgba(24,35,45,0.2)",
+        }}
+        initial={false}
+        animate={isOpening ? { ...flapOpenAnimation, opacity: 1 } : { rotateX: 0, y: 0, scale: 1, opacity: 0 }}
+        transition={{
+          duration: 1.15,
+          ease: [0.2, 0.75, 0.25, 1],
+          opacity: { duration: 0.28, delay: isOpening ? 0.12 : 0 },
+        }}
       />
 
       <motion.div
@@ -80,13 +103,13 @@ const EnvelopeCard = ({ onOpen, onInteraction }: EnvelopeCardProps) => {
       />
 
       <motion.div
-        className="pointer-events-none absolute inset-x-0 bottom-10 z-40 flex justify-center px-6 sm:bottom-12"
+        className="pointer-events-none absolute inset-x-0 bottom-10 z-50 flex justify-center px-6 sm:bottom-12"
         initial={{ opacity: 0, y: 16 }}
         animate={isOpening ? { opacity: 0, y: 22, scale: 0.96 } : { opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="rounded-full border border-white/70 bg-ivory/95 px-7 py-3 text-center text-navy shadow-[0_18px_45px_rgba(13,24,34,0.28)] backdrop-blur-sm">
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-dusty-blue-dark">
+        <div className="px-7 py-3 text-center text-white drop-shadow-[0_3px_10px_rgba(13,24,34,0.65)]">
+          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.34em]">
             Tap to open
           </p>
           <p className="mt-1 text-sm font-serif italic tracking-wide">the invitation</p>

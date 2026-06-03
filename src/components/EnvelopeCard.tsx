@@ -1,5 +1,5 @@
 import { useState, type KeyboardEvent } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import envelopePhoto from "@/assets/Untitled-2.png";
 
 interface EnvelopeCardProps {
@@ -14,102 +14,68 @@ const imageLayerStyle = {
   backgroundSize: "cover",
 };
 
-const flapClipPath = "polygon(0 0, 100% 0, 100% 44%, 50% 70%, 0 44%)";
-
-const innerPocketClipPath = "polygon(0 44%, 50% 70%, 100% 44%, 100% 100%, 0 100%)";
-
-const flapOpenAnimation = { rotateX: -72, y: -70, scale: 1.02 };
-
 const EnvelopeCard = ({ onOpen, onInteraction }: EnvelopeCardProps) => {
-  const [isOpening, setIsOpening] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
 
-  const openEnvelope = () => {
-    if (isOpening) return;
-    onInteraction();
-    setIsOpening(true);
-    setTimeout(onOpen, 700);
+  const handleOpen = () => {
+    if (isDismissed) return;
+    onInteraction(); // Seamlessly starts the music
+    setIsDismissed(true);
+    setTimeout(onOpen, 500); 
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      openEnvelope();
+      handleOpen();
     }
   };
 
   return (
-    <motion.div
-      className="fixed inset-0 z-50 cursor-pointer overflow-hidden bg-[#667582]"
-      style={{ perspective: 1400 }}
-      role="button"
-      tabIndex={0}
-      aria-label="Open wedding invitation envelope"
-      onClick={openEnvelope}
-      onKeyDown={handleKeyDown}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.45 }}
-    >
-      <motion.div
-        className="absolute inset-0"
-        style={imageLayerStyle}
-        animate={isOpening ? { scale: 1.035, filter: "brightness(1.06)" } : { scale: 1, filter: "brightness(1)" }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      />
+    <AnimatePresence>
+      {!isDismissed && (
+        <motion.div
+          className="fixed inset-0 z-50 cursor-pointer overflow-hidden bg-[#667582]"
+          role="button"
+          tabIndex={0}
+          aria-label="Open wedding invitation envelope"
+          onClick={handleOpen}
+          onKeyDown={handleKeyDown}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, filter: "blur(8px)" }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          {/* Main Envelope Image */}
+          <div className="absolute inset-0 z-0" style={imageLayerStyle} />
 
-      <motion.div
-        className="pointer-events-none absolute inset-0 z-[5]"
-        style={{
-          clipPath: innerPocketClipPath,
-          background: "#ffffff",
-        }}
-        initial={false}
-        animate={isOpening ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.28, delay: isOpening ? 0.12 : 0 }}
-      />
+          {/* Ambient Lighting Overlay */}
+          <div
+            className="pointer-events-none absolute inset-0 z-10"
+            style={{
+              background:
+                "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.01), transparent 45%), linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.08))",
+            }}
+          />
 
-      <motion.div
-        className="absolute inset-0 z-10"
-        style={{
-          ...imageLayerStyle,
-          clipPath: flapClipPath,
-          transformOrigin: "50% 42%",
-          transformStyle: "preserve-3d",
-          backfaceVisibility: "hidden",
-          boxShadow: "0 24px 60px rgba(24,35,45,0.28)",
-        }}
-        initial={false}
-        animate={
-          isOpening
-            ? { ...flapOpenAnimation, opacity: 0.82, filter: "brightness(1.1)" }
-            : { rotateX: 0, y: 0, scale: 1, opacity: 1, filter: "brightness(1)" }
-        }
-        transition={{ duration: 1.15, ease: [0.2, 0.75, 0.25, 1] }}
-      />
-
-      <motion.div
-        className="pointer-events-none absolute inset-0 z-30"
-        style={{
-          background:
-            "radial-gradient(circle at 47% 45%, rgba(255,255,255,0.05), transparent 20%), linear-gradient(180deg, rgba(9,18,27,0.06), transparent 35%, rgba(13,24,34,0.18))",
-        }}
-        animate={isOpening ? { opacity: 0.55 } : { opacity: 1 }}
-        transition={{ duration: 0.9 }}
-      />
-
-      <motion.div
-        className="pointer-events-none absolute inset-x-0 bottom-10 z-50 flex justify-center px-6 sm:bottom-12"
-        initial={{ opacity: 0, y: 16 }}
-        animate={isOpening ? { opacity: 0, y: 22, scale: 0.96 } : { opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <div className="px-7 py-3 text-center text-white drop-shadow-[0_3px_10px_rgba(13,24,34,0.65)]">
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.34em]">
-            Tap to open
-          </p>
-          <p className="mt-1 text-sm font-serif italic tracking-wide">the invitation</p>
-        </div>
-      </motion.div>
-    </motion.div>
+          {/* Floating Clean Typography (No Background Box) */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-14 z-20 flex justify-center px-6">
+            <motion.div 
+              className="text-center text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
+              animate={{ y: [0, -4, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            >
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.36em]">
+                Tap to open
+              </p>
+              <p className="mt-1.5 text-sm font-serif italic tracking-wide text-white/90">
+                the invitation
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

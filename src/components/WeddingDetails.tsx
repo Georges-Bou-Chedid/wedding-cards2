@@ -321,10 +321,16 @@ const WeddingDetails = () => (
               Our Lady of Peace Church
             </p>
             <p
-              className="text-muted-foreground mb-5"
+              className="text-muted-foreground mb-3"
               style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontSize: "1rem" }}
             >
               Kfarhbab
+            </p>
+            <p
+              className="mb-5 tracking-widest text-sm font-medium"
+              style={{ fontFamily: "var(--font-amelia)", fontWeight: 300, color: "hsl(var(--foreground))" }}
+            >
+              At 6pm
             </p>
             <MapBtn href="https://maps.app.goo.gl/gcoSPSMQXzhSEZQC8?g_st=iw">
               Get Directions

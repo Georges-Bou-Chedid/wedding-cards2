@@ -16,7 +16,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           {/* Change this from <NotFound /> to <Index /> */}
-          <Route path="/Ibrahim-and-Marianne" element={<Index />} />
+          <Route path="/Elias-and-Vanessa" element={<Index />} />
           {/* Catch-all route for real errors */}
           <Route path="*" element={<NotFound />} />
         </Routes>

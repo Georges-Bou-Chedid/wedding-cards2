@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import EnvelopeCard from "@/components/EnvelopeCard";
+import CoverPage from "@/components/CoverPage";
 import WeddingDetails from "@/components/WeddingDetails";
 import MusicPlayer from "@/components/MusicPlayer";
 
@@ -20,7 +20,7 @@ const Index = () => {
     <>
       <MusicPlayer startRef={musicStartRef} />
       <AnimatePresence>
-        {!isOpen && <EnvelopeCard onOpen={handleOpen} onInteraction={handleInteraction}/>}
+        {!isOpen && <CoverPage onOpen={handleOpen} onInteraction={handleInteraction} />}
       </AnimatePresence>
       {isOpen && (
         <motion.div

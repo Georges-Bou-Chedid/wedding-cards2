@@ -49,9 +49,25 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
   const readyRef = useRef(false);
   const pendingPlayRef = useRef(false);
 
+  /*
+   * YouTube's autoplay-with-sound policy blocks an audible playVideo() call
+   * that arrives via the iframe API's postMessage bridge, even when it's
+   * triggered from a real user click in the parent page — the click's "user
+   * gesture" doesn't propagate across the postMessage boundary into the
+   * iframe's own browsing context. Muted playback is never blocked though,
+   * and unmuting/raising the volume immediately after is not treated as a
+   * new autoplay attempt, so start muted and unmute right away.
+   */
+  const playWithSound = (player: YTPlayer) => {
+    player.mute();
+    player.playVideo();
+    player.unMute();
+    player.setVolume(100);
+  };
+
   const startPlay = useCallback(() => {
   if (playerRef.current) {
-    playerRef.current.playVideo(); // Direct call
+    playWithSound(playerRef.current);
     setIsPlaying(true);
   } else {
     pendingPlayRef.current = true;
@@ -67,8 +83,8 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
     const initPlayer = () => {
       if (!containerRef.current) return;
       playerRef.current = new window.YT.Player(containerRef.current, {
-        height: "0",
-        width: "0",
+        height: "2",
+        width: "2",
         videoId: VIDEO_ID,
         playerVars: {
           start: START_SECONDS,
@@ -90,7 +106,7 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
             readyRef.current = true;
             e.target.seekTo(START_SECONDS, true);
             if (pendingPlayRef.current) {
-              e.target.playVideo();
+              playWithSound(e.target);
               setIsPlaying(true);
               pendingPlayRef.current = false;
             }
@@ -125,7 +141,7 @@ const MusicPlayer = ({ startRef }: MusicPlayerProps) => {
       playerRef.current.pauseVideo();
     } else {
       playerRef.current.seekTo(START_SECONDS, true);
-      playerRef.current.playVideo();
+      playWithSound(playerRef.current);
     }
   };
 

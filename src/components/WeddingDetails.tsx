@@ -57,11 +57,20 @@ const WeddingDetails = () => {
               style={{
                 fontFamily: "'Cormorant Garamond',serif",
                 fontStyle: "italic",
-                fontSize: "clamp(1.4rem,5vw,2.2rem)",
+                fontSize: "clamp(1.8rem,6vw,3rem)",
                 textShadow: "0 2px 16px rgba(0,0,0,0.45)",
               }}
             >
-              …he loved us first
+              …He loved us first
+            </p>
+          </RevealItem>
+
+          <RevealItem>
+            <p
+              className="text-white/65 uppercase tracking-[0.3em]"
+              style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.58rem" }}
+            >
+              1 John 4:19
             </p>
           </RevealItem>
 

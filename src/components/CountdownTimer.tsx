@@ -5,6 +5,8 @@ interface CountdownTimerProps {
   targetDate: string;
   /** Use 'light' when the timer sits on a dark background */
   variant?: "dark" | "light";
+  /** Fixed, smaller sizing for tight spaces (e.g. inside the scratch card), instead of viewport-scaled clamp() sizing. */
+  compact?: boolean;
 }
 
 function getTimeLeft(target: string) {
@@ -17,7 +19,7 @@ function getTimeLeft(target: string) {
   };
 }
 
-const CountdownTimer = ({ targetDate, variant = "dark" }: CountdownTimerProps) => {
+const CountdownTimer = ({ targetDate, variant = "dark", compact = false }: CountdownTimerProps) => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft(targetDate));
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const CountdownTimer = ({ targetDate, variant = "dark" }: CountdownTimerProps) =
   const numStyle: React.CSSProperties = {
     fontFamily: "'Cormorant Garamond',serif",
     fontWeight: 300,
-    fontSize: "clamp(2.8rem,10vw,5rem)",
+    fontSize: compact ? "1.6rem" : "clamp(2.8rem,10vw,5rem)",
     lineHeight: 1,
     color: isLight ? "white" : "hsl(var(--foreground))",
     tabularNums: true,
@@ -38,7 +40,7 @@ const CountdownTimer = ({ targetDate, variant = "dark" }: CountdownTimerProps) =
 
   const labelStyle: React.CSSProperties = {
     fontFamily: "'Montserrat',sans-serif",
-    fontSize: "0.55rem",
+    fontSize: compact ? "0.44rem" : "0.55rem",
     letterSpacing: "0.3em",
     textTransform: "uppercase",
     marginTop: "0.4rem",
@@ -48,7 +50,7 @@ const CountdownTimer = ({ targetDate, variant = "dark" }: CountdownTimerProps) =
   const sepStyle: React.CSSProperties = {
     fontFamily: "'Cormorant Garamond',serif",
     fontWeight: 300,
-    fontSize: "clamp(2rem,7vw,3.5rem)",
+    fontSize: compact ? "1.2rem" : "clamp(2rem,7vw,3.5rem)",
     color: isLight ? "rgba(255,255,255,0.3)" : "hsl(var(--dusty-blue-pale))",
     lineHeight: 1,
     alignSelf: "flex-start",
@@ -62,10 +64,12 @@ const CountdownTimer = ({ targetDate, variant = "dark" }: CountdownTimerProps) =
     { label: "Seconds", value: timeLeft.seconds },
   ];
 
+  const gapClass = compact ? "gap-1.5" : "gap-2 sm:gap-4";
+
   return (
-    <div className="flex items-start justify-center gap-2 sm:gap-4">
+    <div className={`flex items-start justify-center ${gapClass}`}>
       {units.map((unit, i) => (
-        <div key={unit.label} className="flex items-start gap-2 sm:gap-4">
+        <div key={unit.label} className={`flex items-start ${gapClass}`}>
           <motion.div
             className="flex flex-col items-center"
             initial={{ opacity: 0, y: 18 }}

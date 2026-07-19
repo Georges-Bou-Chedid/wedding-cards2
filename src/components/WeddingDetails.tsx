@@ -1,4 +1,3 @@
-import { useState } from "react";
 import RevealSection, { RevealItem } from "./RevealSection";
 import InfoPanel from "./InfoPanel";
 import ScratchCard from "./ScratchCard";
@@ -23,16 +22,13 @@ import {
  */
 import pageWeLoveBg   from "@/assets/we-love-because-bg.webp"; // page: "We love because..."
 import pageVerseBg    from "@/assets/verse-families-bg.webp";  // page: verse end + families + scratch date
-import pageVenueBg    from "@/assets/IMG_2745.webp";           // page: church + venue
-import pageHomesBg    from "@/assets/IMG_2000.webp";           // page: groom's home + bride's home
+import pageVenueBg    from "@/assets/wedding-couple-1.jpg";           // page: church + venue
+import pageHomesBg    from "@/assets/wedding-couple-2.jpg";           // page: groom's home + bride's home
 import pageWishBg     from "@/assets/wedding-couple-3.jpg";    // page: wish account
-import pageRsvpBg     from "@/assets/IMG_2750.webp";           // page: RSVP
-import scratchTexture from "@/assets/sacred-heart-scratch.webp"; // scratch-card overlay art
+import pageRsvpBg     from "@/assets/wedding-couple-3.jpg";           // page: RSVP
 /* ────────────────────────────────────────────────────────────────────────── */
 
 const WeddingDetails = () => {
-  const [isDateRevealed, setIsDateRevealed] = useState(false);
-
   return (
     <div className="h-[100dvh] overflow-y-scroll snap-y snap-mandatory">
       {/* ── 1. "We love because..." ── */}
@@ -96,30 +92,18 @@ const WeddingDetails = () => {
           </RevealItem>
 
           <RevealItem>
-            <div className="flex flex-col items-center gap-3">
-              <p
-                className="text-white/70 uppercase tracking-[0.28em] animate-pulse-soft"
-                style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.58rem" }}
-              >
-                Scratch to reveal your wedding date
-              </p>
-              <ScratchCard overlayImageSrc={scratchTexture} onReveal={() => setIsDateRevealed(true)} />
-            </div>
-          </RevealItem>
-
-          {isDateRevealed && (
-            <RevealItem>
-              <div className="flex flex-col items-center gap-6">
+            <ScratchCard className="w-[300px] h-[230px] sm:w-[360px] sm:h-[250px] animate-pulse-soft">
+              <div className="w-full h-full flex flex-col items-center justify-center gap-3 px-3">
                 <p
                   className="text-white"
-                  style={{ fontFamily: "'Cormorant Garamond',serif", fontWeight: 300, fontSize: "clamp(2rem,6vw,3rem)" }}
+                  style={{ fontFamily: "'Cormorant Garamond',serif", fontWeight: 300, fontSize: "clamp(1.6rem,5vw,2.4rem)" }}
                 >
                   {WEDDING_DATE_DISPLAY}
                 </p>
-                <CountdownTimer targetDate={WEDDING_DATE_ISO} variant="light" />
+                <CountdownTimer targetDate={WEDDING_DATE_ISO} variant="light" compact />
               </div>
-            </RevealItem>
-          )}
+            </ScratchCard>
+          </RevealItem>
         </div>
       </RevealSection>
 

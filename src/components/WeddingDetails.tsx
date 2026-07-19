@@ -63,12 +63,9 @@ const WeddingDetails = () => {
             >
               …He loved us first
             </p>
-          </RevealItem>
-
-          <RevealItem>
             <p
-              className="text-white/65 uppercase tracking-[0.3em]"
-              style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.58rem" }}
+              className="text-white uppercase tracking-[0.3em]"
+              style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "clamp(0.45rem,1.5vw,0.75rem)" }}
             >
               1 John 4:19
             </p>

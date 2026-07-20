@@ -22,10 +22,10 @@ import {
  */
 import pageWeLoveBg   from "@/assets/we-love-because-bg.webp"; // page: "We love because..."
 import pageVerseBg    from "@/assets/verse-families-bg.webp";  // page: verse end + families + scratch date
-import pageVenueBg    from "@/assets/wedding-couple-1.jpg";           // page: church + venue
-import pageHomesBg    from "@/assets/wedding-couple-2.jpg";           // page: groom's home + bride's home
-import pageWishBg     from "@/assets/wedding-couple-3.jpg";    // page: wish account
-import pageRsvpBg     from "@/assets/wedding-couple-3.jpg";           // page: RSVP
+import pageVenueBg    from "@/assets/celebration-bg.webp";           // page: church + venue
+import pageHomesBg    from "@/assets/residence-bg.webp";           // page: groom's home + bride's home
+import pageWishBg     from "@/assets/gift-bg.webp";    // page: wish account
+import pageRsvpBg     from "@/assets/rsvp-bg.webp";           // page: RSVP
 /* ────────────────────────────────────────────────────────────────────────── */
 
 const WeddingDetails = () => {

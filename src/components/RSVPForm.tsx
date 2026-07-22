@@ -8,10 +8,11 @@ interface RSVPFormProps {
   variant?: "light" | "dark";
 }
 
+type GuestResponse = "yes" | "no";
+
 const RSVPForm = ({ variant = "dark" }: RSVPFormProps) => {
   const [invitedNames, setInvitedNames] = useState<string[]>([]);
-  const [selectedAttendees, setSelectedAttendees] = useState<string[]>([]);
-  const [attendance, setAttendance] = useState<"yes" | "no" | "">("");
+  const [responses, setResponses] = useState<Record<string, GuestResponse>>({});
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const isLight = variant === "light";
@@ -22,26 +23,34 @@ const RSVPForm = ({ variant = "dark" }: RSVPFormProps) => {
     if (namesParam) {
       const namesArray = namesParam.split(",").map((n) => n.trim());
       setInvitedNames(namesArray);
-      // Guests start unselected — each name is only tagged as attending or
-      // declining once the guest actively picks it.
     }
   }, []);
 
-  const toggleName = (name: string) => {
-    setSelectedAttendees((prev) =>
-      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name]
-    );
+  const setResponse = (name: string, value: GuestResponse) => {
+    setResponses((prev) => ({ ...prev, [name]: value }));
   };
+
+  const allAnswered = invitedNames.length > 0 && invitedNames.every((name) => responses[name]);
+  const attendingNames = invitedNames.filter((name) => responses[name] === "yes");
+  const decliningNames = invitedNames.filter((name) => responses[name] === "no");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!attendance || selectedAttendees.length === 0) return;
+    if (!allAnswered) return;
     setStatus("submitting");
+
+    const attendanceSummary =
+      decliningNames.length === 0
+        ? "Attending"
+        : attendingNames.length === 0
+        ? "Declined"
+        : `Attending: ${attendingNames.join(", ")}; Declined: ${decliningNames.join(", ")}`;
 
     const payload = new URLSearchParams({
       name: invitedNames.join(", "),
-      attendees: selectedAttendees.join(", "),
-      attendance: attendance === "yes" ? "Attending" : "Declined",
+      attendees: attendingNames.join(", "),
+      declined: decliningNames.join(", "),
+      attendance: attendanceSummary,
       message,
       date: new Date().toLocaleString("en-GB"),
     });
@@ -65,10 +74,17 @@ const RSVPForm = ({ variant = "dark" }: RSVPFormProps) => {
   const labelColor = isLight ? "text-white/70" : "text-dusty-blue";
   const mutedColor = isLight ? "text-white/70" : "text-muted-foreground";
   const chipBorder = isLight ? "border-white/50" : "border-dusty-blue-pale";
-  const chipInactiveText = isLight ? "text-white/50" : "text-muted-foreground";
-  const chipActiveBg = isLight
+  const nameColor = isLight ? "text-white" : "text-foreground";
+  const rowDivider = isLight ? "border-white/20" : "border-dusty-blue-pale/60";
+  const toggleActiveBg = isLight
     ? "bg-white text-foreground border-white"
-    : "bg-foreground text-white border-foreground";
+    : "bg-dusty-blue text-white border-dusty-blue";
+  // A translucent dark backdrop keeps the unselected toggle legible over a
+  // busy photo background — text opacity alone let the photo show straight
+  // through and made it nearly unreadable.
+  const toggleInactiveStyle = isLight
+    ? "bg-black/30 border-white/40 text-white/90"
+    : "bg-transparent border-dusty-blue-pale text-muted-foreground";
 
   return (
     <motion.div
@@ -93,7 +109,7 @@ const RSVPForm = ({ variant = "dark" }: RSVPFormProps) => {
             <Check className="w-7 h-7 text-white" />
           </div>
           <p className={`font-serif italic text-lg ${isLight ? "text-white" : ""}`}>
-            {attendance === "yes" ? "We can't wait to celebrate with you!" : "Thank you for letting us know."}
+            {attendingNames.length > 0 ? "We can't wait to celebrate with you!" : "Thank you for letting us know."}
           </p>
         </motion.div>
       ) : (
@@ -102,42 +118,34 @@ const RSVPForm = ({ variant = "dark" }: RSVPFormProps) => {
             <label className={`block ${mutedColor} tracking-widest uppercase mb-4 text-[0.6rem] font-montserrat`}>
               Guests
             </label>
-            <div className="flex flex-wrap gap-2">
-              {invitedNames.map((name) => (
-                <button
+            <div className="space-y-1">
+              {invitedNames.map((name, i) => (
+                <div
                   key={name}
-                  type="button"
-                  onClick={() => toggleName(name)}
-                  className={`px-4 py-2 border rounded-full transition-all text-xs font-montserrat tracking-tight ${
-                    selectedAttendees.includes(name)
-                      ? chipActiveBg
-                      : `${chipBorder} ${chipInactiveText} opacity-40`
+                  className={`flex items-center justify-between gap-4 py-3 ${
+                    i < invitedNames.length - 1 ? `border-b ${rowDivider}` : ""
                   }`}
                 >
-                  {name}
-                </button>
+                  <span className={`${nameColor} font-serif`} style={{ fontSize: "1.05rem" }}>
+                    {name}
+                  </span>
+                  <div className="flex gap-2 shrink-0">
+                    {(["yes", "no"] as const).map((val) => (
+                      <button
+                        key={val}
+                        type="button"
+                        onClick={() => setResponse(name, val)}
+                        className={`px-4 py-1.5 border rounded-full transition-all text-[0.6rem] tracking-widest uppercase font-montserrat ${
+                          responses[name] === val ? toggleActiveBg : toggleInactiveStyle
+                        }`}
+                      >
+                        {val === "yes" ? "Yes" : "No"}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
-            <p className={`mt-3 text-[0.6rem] ${mutedColor} italic leading-relaxed`}>
-              {attendance === "no"
-                ? "* Select the names of those who are declining."
-                : "* Select the names of those who will be attending."}
-            </p>
-          </div>
-
-          <div className="flex gap-3">
-            {(["yes", "no"] as const).map((val) => (
-              <button
-                key={val}
-                type="button"
-                onClick={() => setAttendance(val)}
-                className={`flex-1 py-4 border rounded-sm transition-all text-[0.65rem] tracking-widest uppercase font-montserrat ${
-                  attendance === val ? "bg-dusty-blue border-dusty-blue text-white" : `${chipBorder} ${mutedColor}`
-                }`}
-              >
-                {val === "yes" ? "Accepts" : "Declines"}
-              </button>
-            ))}
           </div>
 
           <div>
@@ -157,7 +165,7 @@ const RSVPForm = ({ variant = "dark" }: RSVPFormProps) => {
 
           <button
             type="submit"
-            disabled={status === "submitting" || !attendance || selectedAttendees.length === 0}
+            disabled={status === "submitting" || !allAnswered}
             className={`w-full py-4 uppercase tracking-[0.2em] text-[0.7rem] transition-colors disabled:opacity-30 ${
               isLight
                 ? "bg-white text-foreground hover:bg-dusty-blue hover:text-white"

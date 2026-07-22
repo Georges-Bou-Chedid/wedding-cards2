@@ -65,7 +65,7 @@ const WeddingDetails = () => {
             </p>
             <p
               className="text-white uppercase tracking-[0.3em]"
-              style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "clamp(0.9rem,3vw,1.5rem)" }}
+              style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "clamp(0.675rem,2.25vw,1.125rem)" }}
             >
               1 John 4:19
             </p>

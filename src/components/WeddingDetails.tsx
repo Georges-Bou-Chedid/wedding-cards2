@@ -61,11 +61,11 @@ const WeddingDetails = () => {
                 textShadow: "0 2px 16px rgba(0,0,0,0.45)",
               }}
             >
-              …He loved us first
+              …He first loved us
             </p>
             <p
               className="text-white uppercase tracking-[0.3em]"
-              style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "clamp(0.45rem,1.5vw,0.75rem)" }}
+              style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "clamp(0.9rem,3vw,1.5rem)" }}
             >
               1 John 4:19
             </p>
@@ -138,14 +138,6 @@ const WeddingDetails = () => {
       {/* ── 4. Groom's Home + Bride's Home ── */}
       <RevealSection backgroundImage={pageHomesBg}>
         <div className="max-w-3xl mx-auto flex flex-col items-center gap-10">
-          <RevealItem>
-            <h2
-              className="text-white"
-              style={{ fontFamily: "var(--font-amelia)", fontWeight: 300, fontSize: "clamp(1.8rem,6vw,2.6rem)", letterSpacing: "0.04em" }}
-            >
-              Where It All Began
-            </h2>
-          </RevealItem>
           <div className="flex flex-col sm:flex-row gap-8 items-center justify-center w-full">
             <RevealItem>
               <InfoPanel venue={GROOM_HOME} />

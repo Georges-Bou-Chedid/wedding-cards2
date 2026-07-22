@@ -6,10 +6,7 @@ interface InfoPanelProps {
 }
 
 const InfoPanel = ({ venue }: InfoPanelProps) => (
-  <div
-    className="w-full max-w-xs mx-auto px-8 py-8 text-center"
-    style={{ border: "1px solid rgba(255,255,255,0.55)" }}
-  >
+  <div className="w-full max-w-xs mx-auto px-8 py-8 text-center">
     <p
       className="uppercase tracking-[0.32em] mb-3 text-white/70"
       style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.58rem" }}

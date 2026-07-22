@@ -1,6 +1,6 @@
 export const COUPLE = {
   groomFirstName: "Elias",
-  groomFamily: "Bou Mrad Family",
+  groomFamily: "Abou Mrad Family",
   brideFirstName: "Vanessa",
   brideFamily: "Abboud Family",
 } as const;
@@ -37,7 +37,7 @@ export const GROOM_HOME: VenueDetail = {
   label: "Groom's Home",
   name: "Bou Mrad Residence", // placeholder — replace with the real house name/description
   address: "Bsous", // placeholder — replace with the real address
-  time: "At 4pm",
+  time: "Starting at 2:30pm",
   mapHref: "https://maps.app.goo.gl/cQ7FWA7hyvy2FFT17?g_st=iw", // placeholder — replace with the real map link
 };
 
@@ -45,7 +45,7 @@ export const BRIDE_HOME: VenueDetail = {
   label: "Bride's Home",
   name: "Abboud Residence", // placeholder — replace with the real house name/description
   address: "Mansourieh", // placeholder — replace with the real address
-  time: "At 4pm",
+  time: "Starting at 2:30pm",
   mapHref: "https://maps.app.goo.gl/f2srLy5cSZWD4Tt78?g_st=iw", // placeholder — replace with the real map link
 };
 

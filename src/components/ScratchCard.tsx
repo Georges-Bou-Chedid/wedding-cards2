@@ -83,7 +83,7 @@ const ScratchCard = ({ children, onFullyScratched, className = "" }: ScratchCard
 
     ctx.font = `${Math.max(10, Math.round(width * 0.032))}px 'Montserrat', sans-serif`;
     ctx.fillStyle = "rgba(255,255,255,0.72)";
-    ctx.fillText("Y O U R   W E D D I N G   D A T E", midX, midY + height * 0.16);
+    ctx.fillText("T H E   W E D D I N G   D A T E", midX, midY + height * 0.16);
   };
 
   useEffect(() => {

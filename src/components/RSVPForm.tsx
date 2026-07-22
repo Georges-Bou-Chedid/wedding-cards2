@@ -100,7 +100,7 @@ const RSVPForm = ({ variant = "dark" }: RSVPFormProps) => {
         RSVP
       </h2>
       <p className={`${mutedColor} italic mb-8 font-serif`}>
-        Kindly respond before August 15th, 2026.
+        Kindly respond before <b>August 15th</b>, 2026.
       </p>
 
       {status === "success" ? (

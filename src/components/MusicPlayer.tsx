@@ -34,8 +34,8 @@ declare global {
   }
 }
 
-const VIDEO_ID = "U14DEkV2iUI";
-const START_SECONDS = 54;
+const VIDEO_ID = "q6j27Be7mxM";
+const START_SECONDS = 18;
 
 interface MusicPlayerProps {
   /** Call this ref's trigger() after the envelope opens to start playback */

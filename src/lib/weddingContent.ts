@@ -28,14 +28,14 @@ export const CEREMONY_VENUE: VenueDetail = {
 export const RECEPTION_VENUE: VenueDetail = {
   label: "Reception",
   name: "Zone", // placeholder — replace with the real venue name
-  address: "Beirut", // placeholder — replace with the real address
+  address: "Mansourieh", // placeholder — replace with the real address
   time: "At 8pm",
   mapHref: "https://maps.app.goo.gl/EtF9bmbuyhpwSUR89?g_st=iw", // placeholder — replace with the real map link
 };
 
 export const GROOM_HOME: VenueDetail = {
   label: "Groom's Home",
-  name: "Bou Mrad Residence", // placeholder — replace with the real house name/description
+  name: "Abou Mrad Residence", // placeholder — replace with the real house name/description
   address: "Bsous", // placeholder — replace with the real address
   time: "Starting at 2:30pm",
   mapHref: "https://maps.app.goo.gl/cQ7FWA7hyvy2FFT17?g_st=iw", // placeholder — replace with the real map link

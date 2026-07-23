@@ -43,7 +43,7 @@ const WeddingDetails = () => {
               textShadow: "0 2px 16px rgba(0,0,0,0.45)",
             }}
           >
-            We love because…
+            "We love because…
           </p>
         </RevealItem>
       </RevealSection>
@@ -61,7 +61,7 @@ const WeddingDetails = () => {
                 textShadow: "0 2px 16px rgba(0,0,0,0.45)",
               }}
             >
-              …He first loved us
+              …He first loved us"
             </p>
             <p
               className="text-white uppercase tracking-[0.3em]"
